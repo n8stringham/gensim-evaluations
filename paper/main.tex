@@ -15,6 +15,22 @@
   linkcolor    = blue, %Colour of internal links
   citecolor    = blue  %Colour of citations
 }
+\usepackage{amsmath,amsfonts}
+\usepackage{bbm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% latex functions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\ltwo}[1]{\lVert{#1}\rVert}
+\newcommand{\indicator}[1]{\mathbbm{1}\!\left[{#1}\right]}
+
+\newcommand{\R}{\mathbb R}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator{\FindMostSimilar}{\texttt{FindMostSimilar}}
+\DeclareMathOperator{\OddOneOut}{\texttt{OddOneOut}}
+\DeclareMathOperator{\topk}{\texttt{topk}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -44,10 +60,6 @@
   {\tt email@domain} \\}
 
 \date{}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% latex functions
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -92,8 +104,77 @@
 \section{Introduction}
 \label{sec:intro}
 
-\section{Method Overview}
+\section{Evaluation Methods}
 \label{sec:method}
+Assume that there are $m$ categories, that each category has $n$ words, that there are $v$ total words in the vocabulary, and that the words are embedded into $\R^d$.
+Let $c_{i,j}$ be the $j$th word in category $i$,
+and let $C_i = \{c_{i,1}, c_{i,2}, ..., c_{i,n}\}$ be the $i$th category.
+
+\subsection{The $\topk$ method}
+Let $\FindMostSimilar(k,w)$ return the $k$ most similar words in the vocabulary to $w$.
+We define the $\topk$ score for class $i$ to be
+\begin{equation}
+    \topk(k,i) = \sum_{j=1}^m \sum_{x \in \FindMostSimilar(k, c_{i,j})} \indicator{x \in C_i}
+\end{equation}
+and the $\topk$ score for the entire evaluation set to be
+\begin{equation}
+    \topk(k) = \sum_{i=1}^n \topk(k,i)
+    .
+\end{equation}
+
+The runtime of $\FindMostSimilar$ is $O(vk)$.\footnote{
+    We use gensim's implementation of $\FindMostSimilar$,
+    which uses the naive loop strategy for computing the nearest neighbor.
+    Data structures like the $k$d-tree or cover tree could potentially be used to speed up this search,
+    but we did not find such data structures necessary.
+}
+So the runtime of $\topk(k,i)$ is $O(dmk^2v)$
+and the runtime of $\topk(k)$ is $O(dnmk^2v)$.
+Typically $k$ is small (we recommend $k=3$ in our experiments),
+and so the runtime is linear in all of the interesting parameters.
+In particular, it is linear in both the size of our input data and evaluation set.
+
+\subsection{The $\OddOneOut$ method}
+Define the $\OddOneOut$ score of a set $S$ with $k$ words with respect to a word $w\not\in S$ as
+\begin{equation}
+    \OddOneOut(S,w) = \indicator{w = \hat w},
+\end{equation}
+where
+\begin{equation}
+    \hat w = \argmax_{x \in S\cup\{w\}} \ltwo{x - \mu}
+    \quad
+    \text{and}
+    \quad
+    \mu = \frac1{k+1}\bigg(w + \sum_{i=1}^k{s_i}\bigg)
+    .
+\end{equation}
+We define the $k$th order $\OddOneOut$ score of a category $i$ to be
+\begin{equation}
+    \OddOneOut(k,i) = \frac 1 {|P|} \sum_{(S,w) \in P} \OddOneOut(S,w)
+\end{equation}
+where
+\begin{equation}
+    P = \{ (S, w) : S \text{~is a combination of $k$ words from $C_i$}, \text{and~} w \in V-C_i \}
+    .
+    \label{eq:P}
+\end{equation}
+In Equation \eqref{eq:P} above,
+the total number of values that $S$ can take is ${m \choose k} = O(m^k)$,
+and the total number of values that $w$ can take is $O(v)$,
+so $|P| = O(m^kv)$.
+Finally, we define the $k$-th order $\OddOneOut$ score of the entire evaluation set to be
+\begin{equation}
+    \OddOneOut(k) = \frac 1 m \sum_{i=1}^m \OddOneOut(k,i)
+    .
+\end{equation}
+
+The runtime of $\OddOneOut(S,w)$ is $O(dk)$.
+So the runtime of $\OddOneOut(k,i)$ is $O(dkm^kv)$ and the runtime of $\OddOneOut(k)$ is $O(dknm^kv)$.
+
+Comparing the runtimes of $\OddOneOut(k)$ and $\topk(k)$, we can see that $\OddOneOut(k)$ is a factor of $O(m^{k-1}k^{-1})$ slower.
+In real world applications, $m >\!\!> k$, and so $\OddOneOut$ will take considerably more time to compute.
+In particular, the Mikolov test evaluations in Section \ref{} below use $m=50$ and $k=3$,
+so the $\OddOneOut(k)$ score takes approximately 800x longer to compute.
 
 \section{Experiments}
 \label{sec:experiments}
@@ -114,7 +195,7 @@ https://pywikidata.readthedocs.io/en/latest/
 
 wikidata church fathers in latin: \url{https://query.wikidata.org/#SELECT%20%3Fperson%20%3FpersonLabel%0AWHERE%20%7B%0A%20%20%3Fperson%20wdt%3AP361%20wd%3AQ182603.%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22la%22.%20%7D%0A%7D}
 
-SPARQL Tutorial: https://www.wikidata.org/wiki/Wikidata:SPARQL_tutorial
+SPARQL Tutorial: \url{https://www.wikidata.org/wiki/Wikidata:SPARQL_tutorial}
 
 Can we use wikidata to automatically generate good evaluations?
 
