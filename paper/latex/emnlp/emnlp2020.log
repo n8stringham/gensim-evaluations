@@ -1,0 +1,37 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  2 AUG 2020 22:12
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**emnlp2020.bib
+(./emnlp2020.bib
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-03-06>
+
+./emnlp2020.bib:1: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 @
+     book{Aho:72,
+? 
+./emnlp2020.bib:1: Emergency stop.
+ ...                                              
+                                                  
+l.1 @
+     book{Aho:72,
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+ 
+Here is how much of TeX's memory you used:
+ 18 strings out of 480608
+ 527 string characters out of 5903631
+ 239610 words of memory out of 5000000
+ 16009 multiletter control sequences out of 15000+600000
+ 532338 words of font info for 24 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 12i,0n,15p,58b,14s stack positions out of 5000i,500n,10000p,200000b,80000s
+./emnlp2020.bib:1:  ==> Fatal error occurred, no output PDF file produced!
