@@ -17,49 +17,80 @@
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \citation{mikolov2013efficient}
+\citation{}
 \citation{mikolov2013efficient}
 \citation{mikolov2013efficient}
-\citation{mikolov2013efficient}
+\citation{}
+\citation{}
+\citation{}
+\citation{bojanowski2016enriching}
+\citation{pennington2014glove}
+\citation{yin2018dimensionality}
+\citation{}
+\citation{hamilton2016diachronic,hamilton2016cultural,kutuzov2018diachronic,kozlowski2019geometry,dubossarsky2017outta,tang2018state,szymanski2017temporal,liang2018dynamic,chen2017understanding}
+\citation{azarbonyad2017words}
+\citation{kulkarni2015statistically}
+\citation{gonen2020simple}
 \newlabel{sec:intro}{{1}{1}{Introduction}{section.1}{}}
+\citation{NIPS2013_5165}
+\citation{gupta-etal-2019-improving}
+\citation{al2013polyglot}
+\citation{grave2018learning}
+\citation{mikolov2013efficient}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:data_vs_methods}{{1}{1}{The plot above compares the regions of effectiveness for our evaluation metrics. The analogy task fails to measure change in accuracy of the embeddings until the number of unique words in the training dataset reaches $2^{16}$, much later than both $\OddOneOut $ and $\topk $. Though $\OddOneOut $ seems the clear victor of these methods, experimentation in \ref {sec:experiments} shows that $\topk $ works better in some circumstances.\relax }{figure.caption.1}{}}
+\newlabel{fig:size_vs_acc}{{1}{2}{The plot above compares the regions of effectiveness for our evaluation metrics. The analogy task fails to measure change in accuracy of the embeddings until the number of unique words in the training dataset reaches $2^{16}$, much later than both $\OddOneOut $ and $\topk $. Though $\OddOneOut $ seems the clear victor of these methods, experimentation in \ref {sec:experiments} shows that $\topk $ works better in some circumstances.\relax }{figure.caption.1}{}}
 \newlabel{sec:method}{{2}{2}{Evaluation Methods}{section.2}{}}
-\newlabel{eq:P}{{7}{2}{The $\OddOneOut $ method}{equation.2.7}{}}
-\citation{eisner2016emoji2vec}
-\citation{eisner2016emoji2vec}
-\citation{eisner2016emoji2vec}
-\citation{eisner2016emoji2vec}
-\citation{eisner2016emoji2vec}
-\citation{eisner2016emoji2vec}
-\citation{eisner2016emoji2vec}
-\citation{eisner2016emoji2vec}
+\newlabel{eq:P}{{8}{3}{The $\OddOneOut $ method}{equation.2.8}{}}
 \newlabel{sec:experiments}{{3}{3}{Experiments}{section.3}{}}
-\newlabel{fig:data_vs_methods}{{2}{4}{The methods perform better on some categories than others. $\topk $ seems to excel in categories that are more homogenous like 'family female', while analogies seem to work best with geographical relationships. Note that in adapting the Google analogy set to work with our methods required splitting each relationship pair into two separate categories. As a result the analogy score for a given relationship is shown twice; one bar in each of the categories that make up the pair.\relax }{figure.caption.2}{}}
+\citation{rehurek_lrec}
+\citation{buck2014n,grave2018learning}
 \citation{eisner2016emoji2vec}
 \citation{eisner2016emoji2vec}
-\citation{johnson2014}
+\citation{eisner2016emoji2vec}
+\citation{eisner2016emoji2vec}
+\citation{felbo2017using,barbieri2017emojis,ai2017untangling,wijeratne2017semantics,al2019smile,eisner2016emoji2vec}
+\citation{eisner2016emoji2vec}
+\citation{eisner2016emoji2vec}
+\citation{guntuku2019studying}
+\citation{eisner2016emoji2vec}
+\citation{eisner2016emoji2vec}
+\citation{eisner2016emoji2vec}
+\citation{}
+\newlabel{fig:data_vs_methods}{{2}{5}{The methods perform better on some categories than others. $\topk $ seems to excel in categories that are more homogenous like 'family female', while analogies seem to work best with geographical relationships. Note that in adapting the Google analogy set to work with our methods required splitting each relationship pair into two separate categories. As a result the analogy score for a given relationship is shown twice; one bar in each of the categories that make up the pair. \relax }{figure.caption.2}{}}
 \newlabel{fig:emoji}{{3}{5}{This figures shows the tuning of emoji embeddings across different learning learning rates where the max accuracy for each metric is marked with a point. Both $\topk $ and $\OddOneOut $ follow the shape of \cite {eisner2016emoji2vec} area under the curve and accuracy metrics. Our methods lead us to select essentially the same hyperparameters as \cite {eisner2016emoji2vec} and reproduced results on the downstream task.\relax }{figure.caption.3}{}}
-\newlabel{table:language}{{1}{6}{The table above provides details for the best model trained for languages supported by CLTK. Following a tuning process, models were chosen by their $\texttt {Combined Score}$ which is calculated as the harmonic mean of $\topk $ and $\OddOneOut $. It is important to note that the absolute score for our evaluation metrics are not important in and of themselves, rather they are important as indicators of a change in embedding quality that the analogy task would fail to show. To emphasize this, we have reported the raw number of correct answers for each metric. Using $\OddOneOut $ and $\topk $ allows us to tune models trained on corpora with unique token counts in the thousands instead of the millions.\relax }{table.caption.4}{}}
-\citation{*}
+\newlabel{sec:mca}{{4}{5}{Multilingual Content Analysis}{section.4}{}}
+\citation{johnson2014}
+\newlabel{sec:related}{{5}{6}{Related Work}{section.5}{}}
+\newlabel{table:language}{{1}{8}{The table above provides details for the best model trained for languages supported by CLTK. Following a tuning process, models were chosen by their $\texttt {Combined Score}$ which is calculated as the harmonic mean of $\topk $ and $\OddOneOut $. It is important to note that the absolute score for our evaluation metrics are not important in and of themselves, rather they are important as indicators of a change in embedding quality that the analogy task would fail to show. To emphasize this, we have reported the raw number of correct answers for each metric. Using $\OddOneOut $ and $\topk $ allows us to tune models trained on corpora with unique token counts in the thousands instead of the millions.\relax }{table.caption.4}{}}
 \bibstyle{acl_natbib}
 \bibdata{emnlp2020}
-\bibcite{agrawal2018learning}{{1}{2018}{{Agrawal et~al.}}{{Agrawal, An, and Papagelis}}}
-\bibcite{Aho:72}{{2}{1972}{{Aho and Ullman}}{{}}}
-\bibcite{johnson2014}{{3}{2014--2019}{{et~al.}}{{}}}
-\bibcite{APA:83}{{4}{1983}{{American Psychological Association}}{{}}}
-\bibcite{Ando2005}{{5}{2005}{{Ando and Zhang}}{{}}}
-\bibcite{andrew2007scalable}{{6}{2007}{{Andrew and Gao}}{{}}}
-\bibcite{Chandra:81}{{7}{1981}{{Chandra et~al.}}{{Chandra, Kozen, and Stockmeyer}}}
-\bibcite{eisner2016emoji2vec}{{8}{2016}{{Eisner et~al.}}{{Eisner, Rockt{\"a}schel, Augenstein, Bo{\v {s}}njak, and Riedel}}}
-\bibcite{elrazzaz2017methodical}{{9}{2017}{{Elrazzaz et~al.}}{{Elrazzaz, Elbassuoni, Shaban, and Helwe}}}
-\bibcite{Gusfield:97}{{10}{1997}{{Gusfield}}{{}}}
-\bibcite{kunchukuttan2020indicnlp}{{11}{2020}{{Kunchukuttan}}{{}}}
-\bibcite{mikolov2013efficient}{{12}{2013}{{Mikolov et~al.}}{{Mikolov, Chen, Corrado, and Dean}}}
-\bibcite{outsios2019evaluation}{{13}{2019}{{Outsios et~al.}}{{Outsios, Karatsalos, Skianis, and Vazirgiannis}}}
-\bibcite{rasooli-tetrault-2015}{{14}{2015}{{Rasooli and Tetreault}}{{}}}
-\bibcite{sprugnoli2019vir}{{15}{2019}{{Sprugnoli et~al.}}{{Sprugnoli, Passarotti, and Moretti}}}
-\newlabel{sed:acknowledgements}{{5}{7}{Acknowledgements}{section.5}{}}
-\newlabel{sec:related}{{6}{7}{Related Work}{section.6}{}}
-\newlabel{fig:biblicall}{{4}{8}{High performance on the Biblical Figures category indicates some level of biblical influence via the corpus. Interestingly, we see that greek embeddings optimized on the Modern Greek test set significantly outperformed the embeddings optimized for the Ancient Greek. This matches our intuition that things of a biblical nature have had a greater influence on Modern Greek than Ancient Greek.\relax }{figure.caption.5}{}}
-\newlabel{fig:buddhism}{{5}{8}{Though many of the Indic language embeddings performed well on the Facets of Buddhism, surprisingly so did our Latin and Hebrew embeddings. This leads us to believe that some Buddhist concepts and words are shared by corpora spanning languages as diverse as Hebrew, Latin, and Hindi. At the same time, it should also be noted that Latin and Hebrew were two of the largest models trained compared to other classical languages and thus also likely benefit from greater resource richness.\relax }{figure.caption.6}{}}
-\newlabel{fig:hinduism}{{6}{9}{Similar to Figure \ref {fig:biblical} we see languages more closely related to the topic of the category achieving better performance, in this case primarily the Indic languages. Interstingly, our Bengali embeddings performed poorly on this category suggesting that the corpus did not refer heavily to the Hindu context\relax }{figure.caption.7}{}}
+\bibcite{ai2017untangling}{{1}{2017}{{Ai et~al.}}{{Ai, Lu, Liu, Wang, Huang, and Mei}}}
+\bibcite{johnson2014}{{2}{2014--2019}{{et~al.}}{{}}}
+\bibcite{al2019smile}{{3}{2019}{{Al-Halah et~al.}}{{Al-Halah, Aitken, Shi, and Caballero}}}
+\bibcite{al2013polyglot}{{4}{2013}{{Al-Rfou et~al.}}{{Al-Rfou, Perozzi, and Skiena}}}
+\bibcite{azarbonyad2017words}{{5}{2017}{{Azarbonyad et~al.}}{{Azarbonyad, Dehghani, Beelen, Arkut, Marx, and Kamps}}}
+\bibcite{barbieri2017emojis}{{6}{2017}{{Barbieri et~al.}}{{Barbieri, Ballesteros, and Saggion}}}
+\bibcite{bojanowski2016enriching}{{7}{2016}{{Bojanowski et~al.}}{{Bojanowski, Grave, Joulin, and Mikolov}}}
+\bibcite{buck2014n}{{8}{2014}{{Buck et~al.}}{{Buck, Heafield, and Van~Ooyen}}}
+\bibcite{chen2017understanding}{{9}{2017}{{Chen et~al.}}{{Chen, Tsutsui, Ding, and Ma}}}
+\bibcite{dubossarsky2017outta}{{10}{2017}{{Dubossarsky et~al.}}{{Dubossarsky, Weinshall, and Grossman}}}
+\bibcite{eisner2016emoji2vec}{{11}{2016}{{Eisner et~al.}}{{Eisner, Rockt{\"a}schel, Augenstein, Bo{\v {s}}njak, and Riedel}}}
+\bibcite{felbo2017using}{{12}{2017}{{Felbo et~al.}}{{Felbo, Mislove, S{\o }gaard, Rahwan, and Lehmann}}}
+\bibcite{gonen2020simple}{{13}{2020}{{Gonen et~al.}}{{Gonen, Jawahar, Seddah, and Goldberg}}}
+\bibcite{grave2018learning}{{14}{2018}{{Grave et~al.}}{{Grave, Bojanowski, Gupta, Joulin, and Mikolov}}}
+\bibcite{guntuku2019studying}{{15}{2019}{{Guntuku et~al.}}{{Guntuku, Li, Tay, and Ungar}}}
+\bibcite{gupta-etal-2019-improving}{{16}{2019}{{Gupta et~al.}}{{Gupta, Giesselbach, R{\"u}ping, and Bauckhage}}}
+\bibcite{hamilton2016cultural}{{17}{2016{a}}{{Hamilton et~al.}}{{Hamilton, Leskovec, and Jurafsky}}}
+\bibcite{hamilton2016diachronic}{{18}{2016{b}}{{Hamilton et~al.}}{{Hamilton, Leskovec, and Jurafsky}}}
+\bibcite{kozlowski2019geometry}{{19}{2019}{{Kozlowski et~al.}}{{Kozlowski, Taddy, and Evans}}}
+\bibcite{kulkarni2015statistically}{{20}{2015}{{Kulkarni et~al.}}{{Kulkarni, Al-Rfou, Perozzi, and Skiena}}}
+\bibcite{kutuzov2018diachronic}{{21}{2018}{{Kutuzov et~al.}}{{Kutuzov, {\O }vrelid, Szymanski, and Velldal}}}
+\bibcite{liang2018dynamic}{{22}{2018}{{Liang et~al.}}{{Liang, Zhang, Ren, and Kanoulas}}}
+\bibcite{mikolov2013efficient}{{23}{2013}{{Mikolov et~al.}}{{Mikolov, Chen, Corrado, and Dean}}}
+\bibcite{NIPS2013_5165}{{24}{2013}{{Mnih and Kavukcuoglu}}{{}}}
+\bibcite{pennington2014glove}{{25}{2014}{{Pennington et~al.}}{{Pennington, Socher, and Manning}}}
+\bibcite{rehurek_lrec}{{26}{2010}{{{\v R}eh{\r u}{\v r}ek and Sojka}}{{}}}
+\bibcite{szymanski2017temporal}{{27}{2017}{{Szymanski}}{{}}}
+\bibcite{tang2018state}{{28}{2018}{{Tang}}{{}}}
+\bibcite{wijeratne2017semantics}{{29}{2017}{{Wijeratne et~al.}}{{Wijeratne, Balasuriya, Sheth, and Doran}}}
+\bibcite{yin2018dimensionality}{{30}{2018}{{Yin and Shen}}{{}}}

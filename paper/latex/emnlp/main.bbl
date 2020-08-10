@@ -1,16 +1,11 @@
-\begin{thebibliography}{15}
+\begin{thebibliography}{30}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
-\bibitem[{Agrawal et~al.(2018)Agrawal, An, and Papagelis}]{agrawal2018learning}
-Ameeta Agrawal, Aijun An, and Manos Papagelis. 2018.
-\newblock Learning emotion-enriched word representations.
-\newblock In \emph{Proceedings of the 27th International Conference on
-  Computational Linguistics}, pages 950--961.
-
-\bibitem[{Aho and Ullman(1972)}]{Aho:72}
-Alfred~V. Aho and Jeffrey~D. Ullman. 1972.
-\newblock \emph{The Theory of Parsing, Translation and Compiling}, volume~1.
-\newblock Prentice-Hall, Englewood Cliffs, NJ.
+\bibitem[{Ai et~al.(2017)Ai, Lu, Liu, Wang, Huang, and Mei}]{ai2017untangling}
+Wei Ai, Xuan Lu, Xuanzhe Liu, Ning Wang, Gang Huang, and Qiaozhu Mei. 2017.
+\newblock Untangling emoji popularity through semantic embeddings.
+\newblock In \emph{Eleventh International AAAI Conference on Web and Social
+  Media}.
 
 \bibitem[{et~al.(2014--2019)}]{johnson2014}
 Kyle P.~Johnson et~al. 2014--2019.
@@ -18,28 +13,57 @@ Kyle P.~Johnson et~al. 2014--2019.
 \newblock \url{https://github.com/cltk/cltk}.
 \newblock {DOI} 10.5281/zenodo.593336.
 
-\bibitem[{{American Psychological Association}(1983)}]{APA:83}
-{American Psychological Association}. 1983.
-\newblock \emph{Publications Manual}.
-\newblock American Psychological Association, Washington, DC.
+\bibitem[{Al-Halah et~al.(2019)Al-Halah, Aitken, Shi, and
+  Caballero}]{al2019smile}
+Ziad Al-Halah, Andrew Aitken, Wenzhe Shi, and Jose Caballero. 2019.
+\newblock Smile, be happy:) emoji embedding for visual sentiment analysis.
+\newblock In \emph{Proceedings of the IEEE International Conference on Computer
+  Vision Workshops}, pages 0--0.
 
-\bibitem[{Ando and Zhang(2005)}]{Ando2005}
-Rie~Kubota Ando and Tong Zhang. 2005.
-\newblock A framework for learning predictive structures from multiple tasks
-  and unlabeled data.
-\newblock \emph{Journal of Machine Learning Research}, 6:1817--1853.
+\bibitem[{Al-Rfou et~al.(2013)Al-Rfou, Perozzi, and Skiena}]{al2013polyglot}
+Rami Al-Rfou, Bryan Perozzi, and Steven Skiena. 2013.
+\newblock Polyglot: Distributed word representations for multilingual nlp.
+\newblock \emph{arXiv preprint arXiv:1307.1662}.
 
-\bibitem[{Andrew and Gao(2007)}]{andrew2007scalable}
-Galen Andrew and Jianfeng Gao. 2007.
-\newblock Scalable training of {L1}-regularized log-linear models.
-\newblock In \emph{Proceedings of the 24th International Conference on Machine
-  Learning}, pages 33--40.
+\bibitem[{Azarbonyad et~al.(2017)Azarbonyad, Dehghani, Beelen, Arkut, Marx, and
+  Kamps}]{azarbonyad2017words}
+Hosein Azarbonyad, Mostafa Dehghani, Kaspar Beelen, Alexandra Arkut, Maarten
+  Marx, and Jaap Kamps. 2017.
+\newblock Words are malleable: Computing semantic shifts in political and media
+  discourse.
+\newblock In \emph{Proceedings of the 2017 ACM on Conference on Information and
+  Knowledge Management}, pages 1509--1518.
 
-\bibitem[{Chandra et~al.(1981)Chandra, Kozen, and Stockmeyer}]{Chandra:81}
-Ashok~K. Chandra, Dexter~C. Kozen, and Larry~J. Stockmeyer. 1981.
-\newblock \href {https://doi.org/10.1145/322234.322243} {Alternation}.
-\newblock \emph{Journal of the Association for Computing Machinery},
-  28(1):114--133.
+\bibitem[{Barbieri et~al.(2017)Barbieri, Ballesteros, and
+  Saggion}]{barbieri2017emojis}
+Francesco Barbieri, Miguel Ballesteros, and Horacio Saggion. 2017.
+\newblock Are emojis predictable?
+\newblock \emph{arXiv preprint arXiv:1702.07285}.
+
+\bibitem[{Bojanowski et~al.(2016)Bojanowski, Grave, Joulin, and
+  Mikolov}]{bojanowski2016enriching}
+Piotr Bojanowski, Edouard Grave, Armand Joulin, and Tomas Mikolov. 2016.
+\newblock Enriching word vectors with subword information.
+\newblock \emph{arXiv preprint arXiv:1607.04606}.
+
+\bibitem[{Buck et~al.(2014)Buck, Heafield, and Van~Ooyen}]{buck2014n}
+Christian Buck, Kenneth Heafield, and Bas Van~Ooyen. 2014.
+\newblock N-gram counts and language models from the common crawl.
+\newblock In \emph{LREC}, volume~2, page~4. Citeseer.
+
+\bibitem[{Chen et~al.(2017)Chen, Tsutsui, Ding, and Ma}]{chen2017understanding}
+Baitong Chen, Satoshi Tsutsui, Ying Ding, and Feicheng Ma. 2017.
+\newblock Understanding the topic evolution in a scientific domain: An
+  exploratory study for the field of information retrieval.
+\newblock \emph{Journal of Informetrics}, 11(4):1175--1189.
+
+\bibitem[{Dubossarsky et~al.(2017)Dubossarsky, Weinshall, and
+  Grossman}]{dubossarsky2017outta}
+Haim Dubossarsky, Daphna Weinshall, and Eitan Grossman. 2017.
+\newblock Outta control: Laws of semantic change and inherent biases in word
+  representation models.
+\newblock In \emph{Proceedings of the 2017 conference on empirical methods in
+  natural language processing}, pages 1136--1145.
 
 \bibitem[{Eisner et~al.(2016)Eisner, Rockt{\"a}schel, Augenstein,
   Bo{\v{s}}njak, and Riedel}]{eisner2016emoji2vec}
@@ -48,23 +72,88 @@ Ben Eisner, Tim Rockt{\"a}schel, Isabelle Augenstein, Matko Bo{\v{s}}njak, and
 \newblock emoji2vec: Learning emoji representations from their description.
 \newblock \emph{arXiv preprint arXiv:1609.08359}.
 
-\bibitem[{Elrazzaz et~al.(2017)Elrazzaz, Elbassuoni, Shaban, and
-  Helwe}]{elrazzaz2017methodical}
-Mohammed Elrazzaz, Shady Elbassuoni, Khaled Shaban, and Chadi Helwe. 2017.
-\newblock Methodical evaluation of arabic word embeddings.
-\newblock In \emph{Proceedings of the 55th Annual Meeting of the Association
-  for Computational Linguistics (Volume 2: Short Papers)}, pages 454--458.
+\bibitem[{Felbo et~al.(2017)Felbo, Mislove, S{\o}gaard, Rahwan, and
+  Lehmann}]{felbo2017using}
+Bjarke Felbo, Alan Mislove, Anders S{\o}gaard, Iyad Rahwan, and Sune Lehmann.
+  2017.
+\newblock Using millions of emoji occurrences to learn any-domain
+  representations for detecting sentiment, emotion and sarcasm.
+\newblock \emph{arXiv preprint arXiv:1708.00524}.
 
-\bibitem[{Gusfield(1997)}]{Gusfield:97}
-Dan Gusfield. 1997.
-\newblock \emph{Algorithms on Strings, Trees and Sequences}.
-\newblock Cambridge University Press, Cambridge, UK.
+\bibitem[{Gonen et~al.(2020)Gonen, Jawahar, Seddah, and
+  Goldberg}]{gonen2020simple}
+Hila Gonen, Ganesh Jawahar, Djam{\'e} Seddah, and Yoav Goldberg. 2020.
+\newblock Simple, interpretable and stable method for detecting words with
+  usage change across corpora.
+\newblock In \emph{Proceedings of the 58th Annual Meeting of the Association
+  for Computational Linguistics}, pages 538--555.
 
-\bibitem[{Kunchukuttan(2020)}]{kunchukuttan2020indicnlp}
-Anoop Kunchukuttan. 2020.
-\newblock {The IndicNLP Library}.
-\newblock
-  \url{https://github.com/anoopkunchukuttan/indic_nlp_library/blob/master/docs/indicnlp.pdf}.
+\bibitem[{Grave et~al.(2018)Grave, Bojanowski, Gupta, Joulin, and
+  Mikolov}]{grave2018learning}
+Edouard Grave, Piotr Bojanowski, Prakhar Gupta, Armand Joulin, and Tomas
+  Mikolov. 2018.
+\newblock Learning word vectors for 157 languages.
+\newblock \emph{arXiv preprint arXiv:1802.06893}.
+
+\bibitem[{Guntuku et~al.(2019)Guntuku, Li, Tay, and
+  Ungar}]{guntuku2019studying}
+Sharath~Chandra Guntuku, Mingyang Li, Louis Tay, and Lyle~H Ungar. 2019.
+\newblock Studying cultural differences in emoji usage across the east and the
+  west.
+\newblock In \emph{Proceedings of the International AAAI Conference on Web and
+  Social Media}, volume~13, pages 226--235.
+
+\bibitem[{Gupta et~al.(2019)Gupta, Giesselbach, R{\"u}ping, and
+  Bauckhage}]{gupta-etal-2019-improving}
+Vishwani Gupta, Sven Giesselbach, Stefan R{\"u}ping, and Christian Bauckhage.
+  2019.
+\newblock \href {https://doi.org/10.18653/v1/W19-4323} {Improving word
+  embeddings using kernel {PCA}}.
+\newblock In \emph{Proceedings of the 4th Workshop on Representation Learning
+  for NLP (RepL4NLP-2019)}, pages 200--208, Florence, Italy. Association for
+  Computational Linguistics.
+
+\bibitem[{Hamilton et~al.(2016{\natexlab{a}})Hamilton, Leskovec, and
+  Jurafsky}]{hamilton2016cultural}
+William~L Hamilton, Jure Leskovec, and Dan Jurafsky. 2016{\natexlab{a}}.
+\newblock Cultural shift or linguistic drift? comparing two computational
+  measures of semantic change.
+\newblock In \emph{Proceedings of the Conference on Empirical Methods in
+  Natural Language Processing. Conference on Empirical Methods in Natural
+  Language Processing}, volume 2016, page 2116. NIH Public Access.
+
+\bibitem[{Hamilton et~al.(2016{\natexlab{b}})Hamilton, Leskovec, and
+  Jurafsky}]{hamilton2016diachronic}
+William~L Hamilton, Jure Leskovec, and Dan Jurafsky. 2016{\natexlab{b}}.
+\newblock Diachronic word embeddings reveal statistical laws of semantic
+  change.
+\newblock \emph{arXiv preprint arXiv:1605.09096}.
+
+\bibitem[{Kozlowski et~al.(2019)Kozlowski, Taddy, and
+  Evans}]{kozlowski2019geometry}
+Austin~C Kozlowski, Matt Taddy, and James~A Evans. 2019.
+\newblock The geometry of culture: Analyzing the meanings of class through word
+  embeddings.
+\newblock \emph{American Sociological Review}, 84(5):905--949.
+
+\bibitem[{Kulkarni et~al.(2015)Kulkarni, Al-Rfou, Perozzi, and
+  Skiena}]{kulkarni2015statistically}
+Vivek Kulkarni, Rami Al-Rfou, Bryan Perozzi, and Steven Skiena. 2015.
+\newblock Statistically significant detection of linguistic change.
+\newblock In \emph{Proceedings of the 24th International Conference on World
+  Wide Web}, pages 625--635.
+
+\bibitem[{Kutuzov et~al.(2018)Kutuzov, {\O}vrelid, Szymanski, and
+  Velldal}]{kutuzov2018diachronic}
+Andrey Kutuzov, Lilja {\O}vrelid, Terrence Szymanski, and Erik Velldal. 2018.
+\newblock Diachronic word embeddings and semantic shifts: a survey.
+\newblock \emph{arXiv preprint arXiv:1806.03537}.
+
+\bibitem[{Liang et~al.(2018)Liang, Zhang, Ren, and Kanoulas}]{liang2018dynamic}
+Shangsong Liang, Xiangliang Zhang, Zhaochun Ren, and Evangelos Kanoulas. 2018.
+\newblock Dynamic embeddings for user profiling in twitter.
+\newblock In \emph{Proceedings of the 24th ACM SIGKDD International Conference
+  on Knowledge Discovery \& Data Mining}, pages 1764--1773.
 
 \bibitem[{Mikolov et~al.(2013)Mikolov, Chen, Corrado, and
   Dean}]{mikolov2013efficient}
@@ -72,25 +161,52 @@ Tomas Mikolov, Kai Chen, Greg Corrado, and Jeffrey Dean. 2013.
 \newblock Efficient estimation of word representations in vector space.
 \newblock \emph{arXiv preprint arXiv:1301.3781}.
 
-\bibitem[{Outsios et~al.(2019)Outsios, Karatsalos, Skianis, and
-  Vazirgiannis}]{outsios2019evaluation}
-Stamatis Outsios, Christos Karatsalos, Konstantinos Skianis, and Michalis
-  Vazirgiannis. 2019.
-\newblock Evaluation of greek word embeddings.
-\newblock \emph{arXiv preprint arXiv:1904.04032}.
+\bibitem[{Mnih and Kavukcuoglu(2013)}]{NIPS2013_5165}
+Andriy Mnih and Koray Kavukcuoglu. 2013.
+\newblock \href
+  {http://papers.nips.cc/paper/5165-learning-word-embeddings-efficiently-with-noise-contrastive-estimation.pdf}
+  {Learning word embeddings efficiently with noise-contrastive estimation}.
+\newblock In C.~J.~C. Burges, L.~Bottou, M.~Welling, Z.~Ghahramani, and K.~Q.
+  Weinberger, editors, \emph{Advances in Neural Information Processing Systems
+  26}, pages 2265--2273. Curran Associates, Inc.
 
-\bibitem[{Rasooli and Tetreault(2015)}]{rasooli-tetrault-2015}
-Mohammad~Sadegh Rasooli and Joel~R. Tetreault. 2015.
-\newblock \href {http://arxiv.org/abs/1503.06733} {Yara parser: {A} fast and
-  accurate dependency parser}.
-\newblock \emph{Computing Research Repository}, arXiv:1503.06733.
-\newblock Version 2.
+\bibitem[{Pennington et~al.(2014)Pennington, Socher, and
+  Manning}]{pennington2014glove}
+Jeffrey Pennington, Richard Socher, and Christopher~D Manning. 2014.
+\newblock Glove: Global vectors for word representation.
+\newblock In \emph{Proceedings of the 2014 conference on empirical methods in
+  natural language processing (EMNLP)}, pages 1532--1543.
 
-\bibitem[{Sprugnoli et~al.(2019)Sprugnoli, Passarotti, and
-  Moretti}]{sprugnoli2019vir}
-Rachele Sprugnoli, Marco Passarotti, and Giovanni Moretti. 2019.
-\newblock Vir is to moderatus as mulier is to intemperans-lemma embeddings for
-  latin.
-\newblock In \emph{CLiC-it}.
+\bibitem[{{\v R}eh{\r u}{\v r}ek and Sojka(2010)}]{rehurek_lrec}
+Radim {\v R}eh{\r u}{\v r}ek and Petr Sojka. 2010.
+\newblock {Software Framework for Topic Modelling with Large Corpora}.
+\newblock In \emph{{Proceedings of the LREC 2010 Workshop on New Challenges for
+  NLP Frameworks}}, pages 45--50, Valletta, Malta. ELRA.
+\newblock \url{http://is.muni.cz/publication/884893/en}.
+
+\bibitem[{Szymanski(2017)}]{szymanski2017temporal}
+Terrence Szymanski. 2017.
+\newblock Temporal word analogies: Identifying lexical replacement with
+  diachronic word embeddings.
+\newblock In \emph{Proceedings of the 55th annual meeting of the association
+  for computational linguistics (volume 2: short papers)}, pages 448--453.
+
+\bibitem[{Tang(2018)}]{tang2018state}
+Xuri Tang. 2018.
+\newblock A state-of-the-art of semantic change computation.
+\newblock \emph{arXiv preprint arXiv:1801.09872}.
+
+\bibitem[{Wijeratne et~al.(2017)Wijeratne, Balasuriya, Sheth, and
+  Doran}]{wijeratne2017semantics}
+Sanjaya Wijeratne, Lakshika Balasuriya, Amit Sheth, and Derek Doran. 2017.
+\newblock A semantics-based measure of emoji similarity.
+\newblock In \emph{Proceedings of the International Conference on Web
+  Intelligence}, pages 646--653.
+
+\bibitem[{Yin and Shen(2018)}]{yin2018dimensionality}
+Zi~Yin and Yuanyuan Shen. 2018.
+\newblock On the dimensionality of word embedding.
+\newblock In \emph{Advances in Neural Information Processing Systems}, pages
+  887--898.
 
 \end{thebibliography}
