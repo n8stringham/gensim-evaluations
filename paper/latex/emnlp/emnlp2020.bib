@@ -382,3 +382,131 @@ url = {http://papers.nips.cc/paper/5165-learning-word-embeddings-efficiently-wit
   pages={226--235},
   year={2019}
 }
+
+@article{jiang2018learningword,
+  title={LearningWord Embeddings for Low-resource Languages by PU Learning},
+  author={Jiang, Chao and Yu, Hsiang-Fu and Hsieh, Cho-Jui and Chang, Kai-Wei},
+  journal={arXiv preprint arXiv:1805.03366},
+  year={2018}
+}
+
+@inproceedings{finkelstein2001placing,
+  title={Placing search in context: The concept revisited},
+  author={Finkelstein, Lev and Gabrilovich, Evgeniy and Matias, Yossi and Rivlin, Ehud and Solan, Zach and Wolfman, Gadi and Ruppin, Eytan},
+  booktitle={Proceedings of the 10th international conference on World Wide Web},
+  pages={406--414},
+  year={2001}
+}
+
+@inproceedings{zesch2008using,
+  title={Using Wiktionary for Computing Semantic Relatedness.},
+  author={Zesch, Torsten and M{\"u}ller, Christof and Gurevych, Iryna},
+  year={2008}
+}
+
+@article{agirre2009study,
+  title={A study on similarity and relatedness using distributional and wordnet-based approaches},
+  author={Agirre, Eneko and Alfonseca, Enrique and Hall, Keith and Kravalova, Jana and Pasca, Marius and Soroa, Aitor},
+  year={2009}
+}
+
+@inproceedings{radinsky2011word,
+  title={A word at a time: computing word relatedness using temporal semantic analysis},
+  author={Radinsky, Kira and Agichtein, Eugene and Gabrilovich, Evgeniy and Markovitch, Shaul},
+  booktitle={Proceedings of the 20th international conference on World wide web},
+  pages={337--346},
+  year={2011}
+}
+
+@inproceedings{bruni2012distributional,
+  title={Distributional semantics in technicolor},
+  author={Bruni, Elia and Boleda, Gemma and Baroni, Marco and Tran, Nam-Khanh},
+  booktitle={Proceedings of the 50th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  pages={136--145},
+  year={2012}
+}
+
+@inproceedings{adams-etal-2017-cross,
+    title = "Cross-Lingual Word Embeddings for Low-Resource Language Modeling",
+    author = "Adams, Oliver  and
+      Makarucha, Adam  and
+      Neubig, Graham  and
+      Bird, Steven  and
+      Cohn, Trevor",
+    booktitle = "Proceedings of the 15th Conference of the {E}uropean Chapter of the Association for Computational Linguistics: Volume 1, Long Papers",
+    month = apr,
+    year = "2017",
+    address = "Valencia, Spain",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/E17-1088",
+    pages = "937--947",
+    abstract = "Most languages have no established writing system and minimal written records. However, textual data is essential for natural language processing, and particularly important for training language models to support speech recognition. Even in cases where text data is missing, there are some languages for which bilingual lexicons are available, since creating lexicons is a fundamental task of documentary linguistics. We investigate the use of such lexicons to improve language models when textual training data is limited to as few as a thousand sentences. The method involves learning cross-lingual word embeddings as a preliminary step in training monolingual language models. Results across a number of languages show that language models are improved by this pre-training. Application to Yongning Na, a threatened language, highlights challenges in deploying the approach in real low-resource environments.",
+}
+
+@inproceedings{jungmaier-etal-2020-dirichlet,
+    title = "{D}irichlet-Smoothed Word Embeddings for Low-Resource Settings",
+    author = "Jungmaier, Jakob  and
+      Kassner, Nora  and
+      Roth, Benjamin",
+    booktitle = "Proceedings of The 12th Language Resources and Evaluation Conference",
+    month = may,
+    year = "2020",
+    address = "Marseille, France",
+    publisher = "European Language Resources Association",
+    url = "https://www.aclweb.org/anthology/2020.lrec-1.437",
+    pages = "3560--3565",
+    abstract = "Nowadays, classical count-based word embeddings using positive pointwise mutual information (PPMI) weighted co-occurrence matrices have been widely superseded by machine-learning-based methods like word2vec and GloVe. But these methods are usually applied using very large amounts of text data. In many cases, however, there is not much text data available, for example for specific domains or low-resource languages. This paper revisits PPMI by adding Dirichlet smoothing to correct its bias towards rare words. We evaluate on standard word similarity data sets and compare to word2vec and the recent state of the art for low-resource settings: Positive and Unlabeled (PU) Learning for word embeddings. The proposed method outperforms PU-Learning for low-resource settings and obtains competitive results for Maltese and Luxembourgish.",
+    language = "English",
+    ISBN = "979-10-95546-34-4",
+}
+
+@inproceedings{michel-etal-2020-exploring,
+    title = "Exploring Bilingual Word Embeddings for {H}iligaynon, a Low-Resource Language",
+    author = "Michel, Leah  and
+      Hangya, Viktor  and
+      Fraser, Alexander",
+    booktitle = "Proceedings of The 12th Language Resources and Evaluation Conference",
+    month = may,
+    year = "2020",
+    address = "Marseille, France",
+    publisher = "European Language Resources Association",
+    url = "https://www.aclweb.org/anthology/2020.lrec-1.313",
+    pages = "2573--2580",
+    abstract = "This paper investigates the use of bilingual word embeddings for mining Hiligaynon translations of English words. There is very little research on Hiligaynon, an extremely low-resource language of Malayo-Polynesian origin with over 9 million speakers in the Philippines (we found just one paper). We use a publicly available Hiligaynon corpus with only 300K words, and match it with a comparable corpus in English. As there are no bilingual resources available, we manually develop a English-Hiligaynon lexicon and use this to train bilingual word embeddings. But we fail to mine accurate translations due to the small amount of data. To find out if the same holds true for a related language pair, we simulate the same low-resource setup on English to German and arrive at similar results. We then vary the size of the comparable English and German corpora to determine the minimum corpus size necessary to achieve competitive results. Further, we investigate the role of the seed lexicon. We show that with the same corpus size but with a smaller seed lexicon, performance can surpass results of previous studies. We release the lexicon of 1,200 English-Hiligaynon word pairs we created to encourage further investigation.",
+    language = "English",
+    ISBN = "979-10-95546-34-4",
+}
+
+@inproceedings{camacho-collados-navigli-2016-find,
+    title = "Find the word that does not belong: A Framework for an Intrinsic Evaluation of Word Vector Representations",
+    author = "Camacho-Collados, Jos{\'e}  and
+      Navigli, Roberto",
+    booktitle = "Proceedings of the 1st Workshop on Evaluating Vector-Space Representations for {NLP}",
+    month = aug,
+    year = "2016",
+    address = "Berlin, Germany",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/W16-2508",
+    doi = "10.18653/v1/W16-2508",
+    pages = "43--50",
+}
+
+@article{bergstra2012random,
+  title={Random search for hyper-parameter optimization},
+  author={Bergstra, James and Bengio, Yoshua},
+  journal={The Journal of Machine Learning Research},
+  volume={13},
+  number={1},
+  pages={281--305},
+  year={2012},
+  publisher={JMLR. org}
+}
+
+@article{wang2019evaluating,
+  title={Evaluating word embedding models: Methods and experimental results},
+  author={Wang, Bin and Wang, Angela and Chen, Fenxiao and Wang, Yuncheng and Kuo, C-C Jay},
+  journal={APSIPA transactions on signal and information processing},
+  volume={8},
+  year={2019},
+  publisher={Cambridge University Press}
+}

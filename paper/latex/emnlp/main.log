@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.11.14)  9 AUG 2020 23:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.11.14)  11 AUG 2020 00:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -819,12 +819,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 84.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 84.
-
-Underfull \hbox (badness 1210) in paragraph at lines 86--90
-\OT1/ptm/m/n/10 tasks an The anal-ogy task is not suit-able
- []
-
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 110.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 90.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
@@ -833,152 +828,140 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `pcr' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 122.
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 
 ]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 193.
 
-LaTeX Warning: Reference `sec:' on page 2 undefined on input line 159.
+Underfull \hbox (badness 10000) in paragraph at lines 193--193
+[][][]\OT1/ptm/m/n/9 (+20) For the full list of lan-guages sup-ported, see
+ []
 
-<size_vs_acc.pdf, id=80, 319.4334pt x 197.2971pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 193--193
+[][]$\OT1/pcr/m/n/9 https : / / www . wikidata . org / wiki / Help :
+ []
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 198.
+<size_vs_acc.pdf, id=83, 319.4334pt x 197.2971pt>
 File: size_vs_acc.pdf Graphic file (type pdf)
  <use size_vs_acc.pdf>
-Package pdftex.def Info: size_vs_acc.pdf used on input line 184.
+Package pdftex.def Info: size_vs_acc.pdf used on input line 204.
 (pdftex.def)             Requested size: 219.08612pt x 135.3223pt.
 
 [2 <./size_vs_acc.pdf>]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 242.
 LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 240.
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 242.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 240.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 242.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 240.
-LaTeX Font Info:    Try loading font information for U+bbm on input line 244.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 242.
+LaTeX Font Info:    Try loading font information for U+bbm on input line 248.
 
 (/usr/share/texlive/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
-Underfull \hbox (badness 10000) in paragraph at lines 257--257
-[][][] \OT1/ptm/m/n/9 (+20) We use gen-sim's im-ple-men-ta-tion of
- []
-
-
-Underfull \hbox (badness 1253) in paragraph at lines 257--257
-[]$\OT1/ptm/m/n/9 (+20) , which uses the naive loop strat-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 252--263
-[]\OT1/ptm/m/n/10.95 (+20) The run-time of $[]$ is
- []
-
-
-Underfull \hbox (badness 1681) in paragraph at lines 252--263
-\OML/cmm/m/it/10.95 O\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 dvk\OT1/cmr/m/n/10
-.95 )$\OT1/ptm/m/n/10.95 (+20) .[][][][][] So the run-time of $[]\OT1/cmr/m/n/1
-0.95 (\OML/cmm/m/it/10.95 k; i\OT1/cmr/m/n/10.95 )$ \OT1/ptm/m/n/10.95 (+20) is
-
- []
-
-
-Underfull \hbox (badness 4316) in paragraph at lines 252--263
-\OML/cmm/m/it/10.95 O\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 dnk[]v\OT1/cmr/m/n
-/10.95 )$ \OT1/ptm/m/n/10.95 (+20) and the run-time of $[]\OT1/cmr/m/n/10.95 (\
-OML/cmm/m/it/10.95 k\OT1/cmr/m/n/10.95 )$ \OT1/ptm/m/n/10.95 (+20) is
- []
-
-
-Overfull \hbox (1.73012pt too wide) detected at line 299
+Overfull \hbox (1.73012pt too wide) detected at line 304
 []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 k; i\OT1/cmr/m/n/10.95 ) = [] [] [](\
 OML/cmm/m/it/10.95 S; w\OT1/cmr/m/n/10.95 )
  []
 
 
-Overfull \hbox (99.41191pt too wide) detected at line 305
-\OML/cmm/m/it/10.95 P \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 f\OT1/cmr/m/n/10
-.95 (\OML/cmm/m/it/10.95 S; w\OT1/cmr/m/n/10.95 ) : \OML/cmm/m/it/10.95 S[]; []
-w \OMS/cmsy/m/n/10.95 2 \OML/cmm/m/it/10.95 V \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/
-m/it/10.95 C[]\OMS/cmsy/m/n/10.95 g\OML/cmm/m/it/10.95 :
- []
-
-
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 307.
+(amsmath)                 on input line 312.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 316--318
+Underfull \hbox (badness 10000) in paragraph at lines 321--323
 []\OT1/ptm/m/n/10.95 (+20) The run-time of $[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it
 /10.95 S; w\OT1/cmr/m/n/10.95 )$ \OT1/ptm/m/n/10.95 (+20) is
  []
 
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 335.
-LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10.95> not available
-(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 335.
+
+Underfull \hbox (badness 10000) in paragraph at lines 334--338
+\OT1/ptm/m/n/10.95 (+20) With this def-i-ni-tion, the run-time of
+ []
+
+
+Underfull \hbox (badness 1960) in paragraph at lines 334--338
+[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 k\OT1/cmr/m/n/10.95 )$ \OT1/ptm/m/n/1
+0.95 (+20) is $\OML/cmm/m/it/10.95 O\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 dkm
+pv\OT1/cmr/m/n/10.95 )$\OT1/ptm/m/n/10.95 (+20) , which is lin-
+ []
+
 [3]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 372.
- <cross_cat_acc.pdf, id=170, 462.52798pt x 346.89601pt>
+LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10.95> not available
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 407.
+ <cross_cat_acc.pdf, id=197, 462.52798pt x 346.89601pt>
 File: cross_cat_acc.pdf Graphic file (type pdf)
 
 <use cross_cat_acc.pdf>
-Package pdftex.def Info: cross_cat_acc.pdf used on input line 402.
+Package pdftex.def Info: cross_cat_acc.pdf used on input line 411.
 (pdftex.def)             Requested size: 462.52684pt x 346.89516pt.
- <emoji_exp.pdf, id=171, 437.9562pt x 270.2898pt>
+ <emoji_exp.pdf, id=198, 437.9562pt x 270.2898pt>
 File: emoji_exp.pdf Graphic file (type pdf)
 
 <use emoji_exp.pdf>
-Package pdftex.def Info: emoji_exp.pdf used on input line 417.
+Package pdftex.def Info: emoji_exp.pdf used on input line 426.
 (pdftex.def)             Requested size: 437.95512pt x 270.28914pt.
-
-
-LaTeX Warning: Reference `' on page 4 undefined on input line 438.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 444--444
-[][][][][]$\OT1/pcr/m/n/9 https : / / unicode . org / Public / emoji / 13 .
- []
-
-[4] [5 <./cross_cat_acc.pdf> <./emoji_exp.pdf
+ [4] [5 <./cross_cat_acc.pdf> <./emoji_exp.pdf
 
 pdfTeX warning: pdflatex (file ./emoji_exp.pdf): PDF inclusion: multiple pdfs w
 ith page group included in a single page
 >]
-Overfull \hbox (90.83022pt too wide) in paragraph at lines 484--523
+Overfull \hbox (90.83022pt too wide) in paragraph at lines 517--556
  [][] 
  []
 
-<biblical-raw.pdf, id=284, 437.9562pt x 270.2898pt>
+<example-image-a.png, id=304, 401.5pt x 301.125pt>
+File: example-image-a.png Graphic file (type png)
+ <use example-image-a.png>
+Package pdftex.def Info: example-image-a.png used on input line 571.
+(pdftex.def)             Requested size: 219.08612pt x 164.31892pt.
+
+[6] <biblical-raw.pdf, id=322, 437.9562pt x 270.2898pt>
 File: biblical-raw.pdf Graphic file (type pdf)
  <use biblical-raw.pdf>
-Package pdftex.def Info: biblical-raw.pdf used on input line 567.
+Package pdftex.def Info: biblical-raw.pdf used on input line 617.
 (pdftex.def)             Requested size: 437.95512pt x 270.28914pt.
 
-<buddhism-raw.pdf, id=285, 437.9562pt x 270.2898pt>
+<buddhism-raw.pdf, id=323, 437.9562pt x 270.2898pt>
 File: buddhism-raw.pdf Graphic file (type pdf)
  <use buddhism-raw.pdf>
-Package pdftex.def Info: buddhism-raw.pdf used on input line 568.
+Package pdftex.def Info: buddhism-raw.pdf used on input line 618.
 (pdftex.def)             Requested size: 437.95512pt x 270.28914pt.
 
-<hinduism-raw.pdf, id=286, 437.9562pt x 270.2898pt>
+<hinduism-raw.pdf, id=324, 437.9562pt x 270.2898pt>
 File: hinduism-raw.pdf Graphic file (type pdf)
  <use hinduism-raw.pdf>
-Package pdftex.def Info: hinduism-raw.pdf used on input line 569.
+Package pdftex.def Info: hinduism-raw.pdf used on input line 619.
 (pdftex.def)             Requested size: 437.95512pt x 270.28914pt.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 587.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 634.
 
 
-LaTeX Warning: Reference `fig:biblical' on page 6 undefined on input line 587.
+LaTeX Warning: Reference `fig:biblical' on page 7 undefined on input line 634.
 
 
-LaTeX Warning: Reference `fig:biblical' on page 6 undefined on input line 587.
+LaTeX Warning: Reference `fig:biblical' on page 7 undefined on input line 634.
 
-[6] [7 <./biblical-raw.pdf> <./buddhism-raw.pdf
+
+Underfull \hbox (badness 10000) in paragraph at lines 677--678
+\OT1/ptm/m/it/10.95 (+20) Collados and Nav-igli[][] ([][]2016[][]) pro-pose the
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7 </usr/share/texlive/texmf-dist/tex/latex/mwe/example-image-a.png>] [8 <./bi
+blical-raw.pdf> <./buddhism-raw.pdf
 
 pdfTeX warning: pdflatex (file ./buddhism-raw.pdf): PDF inclusion: multiple pdf
 s with page group included in a single page
@@ -986,66 +969,87 @@ s with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./hinduism-raw.pdf): PDF inclusion: multiple pdf
 s with page group included in a single page
->] [8] (./main.bbl
-Underfull \hbox (badness 2119) in paragraph at lines 5--9
+>]
+
+LaTeX Warning: Reference `' on page 9 undefined on input line 683.
+
+
+LaTeX Warning: Reference `sec:' on page 9 undefined on input line 702.
+
+[9
+
+] (./main.bbl
+Underfull \hbox (badness 2119) in paragraph at lines 22--26
 \OT1/ptm/m/n/10 Huang, and Qiaozhu Mei. 2017.  Un-tan-gling
  []
 
 
-Underfull \hbox (badness 3838) in paragraph at lines 24--27
+Underfull \hbox (badness 3838) in paragraph at lines 41--44
 \OT1/ptm/m/n/10 2013.  Poly-glot: Dis-tributed word rep-re-sen-
  []
 
 
-Underfull \hbox (badness 4144) in paragraph at lines 24--27
+Underfull \hbox (badness 4144) in paragraph at lines 41--44
 \OT1/ptm/m/n/10 ta-tions for mul-ti-lin-gual nlp.  \OT1/ptm/m/it/10 arXiv prepr
 int
  []
 
 
-Underfull \hbox (badness 1067) in paragraph at lines 45--48
+Underfull \hbox (badness 1067) in paragraph at lines 67--70
 []\OT1/ptm/m/n/10 Piotr Bo-janowski, Edouard Grave, Ar-mand Joulin,
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \hbox (badness 1917) in paragraph at lines 62--67
+Underfull \hbox (badness 1917) in paragraph at lines 101--106
 []\OT1/ptm/m/n/10 Haim Du-bossarsky, Daphna Wein-shall, and Ei-tan
  []
 
 
-Underfull \hbox (badness 6842) in paragraph at lines 70--74
+Underfull \hbox (badness 6842) in paragraph at lines 109--113
 \OT1/ptm/m/n/10 Matko Bo[]snjak, and Se-bas-tian Riedel. 2016.
  []
 
-[9
+[10
 
 ]
-Underfull \hbox (badness 3098) in paragraph at lines 165--172
-\OT1/ptm/m/n/10 es-ti-ma-tion[][].  In C. J. C. Burges, L. Bot-tou,
+Underfull \hbox (badness 1253) in paragraph at lines 181--184
+\OT1/ptm/m/n/10 low-resource lan-guages by pu learn-ing.  \OT1/ptm/m/it/10 arXi
+v
  []
 
 
-Underfull \hbox (badness 1189) in paragraph at lines 181--186
+Underfull \hbox (badness 1107) in paragraph at lines 222--228
+\OT1/ptm/m/it/10 u-a-tion Con-fer-ence\OT1/ptm/m/n/10 , pages 2573--2580, Mar-s
+eille,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--250
+[]\OT1/ptm/m/n/10 Kira Radin-sky, Eu-gene Agichtein, Ev-geniy
+ []
+
+
+Underfull \hbox (badness 1728) in paragraph at lines 244--250
+\OT1/ptm/m/n/10 Gabrilovich, and Shaul Markovitch. 2011.  A
+ []
+
+
+Underfull \hbox (badness 1189) in paragraph at lines 252--257
 []\OT1/ptm/m/n/10 Radim []Reh[]u[]rek and Petr So-jka. 2010.  Soft-ware
  []
 
 
-Underfull \hbox (badness 2846) in paragraph at lines 188--193
+Underfull \hbox (badness 2846) in paragraph at lines 259--264
 \OT1/ptm/m/n/10 Iden-ti-fy-ing lex-i-cal re-place-ment with di-achronic
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1053.
- [10
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1053.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1160.
+ [11]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1160.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1053.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1053.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1160.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1160.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
@@ -1053,17 +1057,17 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1053.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1160.
  )
 (\end occurred when \iffalse on line 352 was incomplete) 
 Here is how much of TeX's memory you used:
- 20395 strings out of 493013
- 383020 string characters out of 6135681
- 487929 words of memory out of 5000000
- 23445 multiletter control sequences out of 15000+600000
- 61280 words of font info for 257 fonts, out of 8000000 for 9000
+ 20491 strings out of 493013
+ 384882 string characters out of 6135681
+ 486955 words of memory out of 5000000
+ 23486 multiletter control sequences out of 15000+600000
+ 63245 words of font info for 279 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,13n,47p,10355b,879s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,13n,46p,10355b,887s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/tex
 mf-dist/fonts/enc/dvips/base/8r.enc} </home/user/.texlive2016/texmf-var/fonts/p
 k/ljfour/public/bbm/bbm10.657pk></usr/share/texlive/texmf-dist/fonts/type1/publ
@@ -1090,10 +1094,10 @@ rw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utm
 b8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (10 pages, 478404 bytes).
+Output written on main.pdf (11 pages, 494858 bytes).
 PDF statistics:
- 467 PDF objects out of 1000 (max. 8388607)
- 412 compressed objects within 5 object streams
- 76 named destinations out of 1000 (max. 500000)
- 46111 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 533 PDF objects out of 1000 (max. 8388607)
+ 476 compressed objects within 5 object streams
+ 96 named destinations out of 1000 (max. 500000)
+ 46116 words of extra memory for PDF output out of 51595 (max. 10000000)
 

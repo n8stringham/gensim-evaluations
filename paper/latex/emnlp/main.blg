@@ -7,47 +7,48 @@ Reallocated global_strs (elt_size=20001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: emnlp2020.bib
-Warning--I didn't find a database entry for ""
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 30 entries,
+Warning--empty journal in agirre2009study
+Warning--empty booktitle in zesch2008using
+You've used 41 entries,
             3571 wiz_defined-function locations,
-            858 strings with 12174 characters,
-and the built_in function-call counts, 23195 in all, are:
-= -- 2033
-> -- 1109
-< -- 27
-+ -- 354
-- -- 317
-* -- 1480
-:= -- 3362
-add.period$ -- 127
-call.type$ -- 30
-change.case$ -- 289
-chr.to.int$ -- 31
-cite$ -- 30
-duplicate$ -- 1603
-empty$ -- 1658
-format.name$ -- 408
-if$ -- 5134
+            919 strings with 14738 characters,
+and the built_in function-call counts, 32140 in all, are:
+= -- 2816
+> -- 1565
+< -- 34
++ -- 502
+- -- 450
+* -- 2076
+:= -- 4646
+add.period$ -- 172
+call.type$ -- 41
+change.case$ -- 402
+chr.to.int$ -- 42
+cite$ -- 43
+duplicate$ -- 2210
+empty$ -- 2284
+format.name$ -- 575
+if$ -- 7113
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 317
-newline$ -- 156
-num.names$ -- 122
-pop$ -- 747
+missing$ -- 438
+newline$ -- 209
+num.names$ -- 164
+pop$ -- 1034
 preamble$ -- 1
-purify$ -- 224
+purify$ -- 314
 quote$ -- 0
-skip$ -- 1135
+skip$ -- 1558
 stack$ -- 0
-substring$ -- 872
-swap$ -- 803
-text.length$ -- 19
+substring$ -- 1214
+swap$ -- 1109
+text.length$ -- 25
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 270
-warning$ -- 0
-while$ -- 139
+type$ -- 369
+warning$ -- 2
+while$ -- 191
 width$ -- 0
-write$ -- 395
-(There was 1 warning)
+write$ -- 538
+(There were 2 warnings)

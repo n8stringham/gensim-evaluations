@@ -53,7 +53,7 @@
 
 \newcommand{\R}{\mathbb R}
 \DeclareMathOperator*{\argmax}{arg\,max}
-\DeclareMathOperator{\FindMostSimilar}{\texttt{FindMostSimilar}}
+\DeclareMathOperator{\FindMostSimilar}{\texttt{Sim}}
 \DeclareMathOperator{\OddOneOut}{\texttt{OddOneOut}}
 \DeclareMathOperator{\topk}{\texttt{Topk}}
 \DeclareMathOperator{\analogy}{\texttt{Analogy}}
@@ -83,101 +83,121 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-The analogy task introduced by \citet{mikolov2013efficient} has become the standard method to evaluate word embeddings because it correlates well with performance on downstream tasks an
-The analogy task is not suitable for low-resource languages,
-however, because good performance requires a large amount of training data and meaningful analogies can be difficult to create.
-As a result, researchers in working in low-resource settings have created many ad-hoc methods for 
+    The analogy task introduced by \citet{mikolov2013efficient} has become the standard method for tuning the hyperparameters for word embedding models.
+    It has an intrinsic appeal and has been shown to correlate well with downstream tasks.
+    In this paper, however, we show that the analogy task is unsuitable for low-resource settings for two reasons: (1) it requires large amounts of data to make measurable progress on,
+    and (2) it is not even well-defined in some settings.
+    We solve this problem by introducing the $\OddOneOut$ and $\topk$ tasks,
+    which are specifically designed for model selection in the low-resource setting.
+    Performance on these tasks also correlates well with downstream tasks,
+    but these tasks are more sensitive to word embedding performance when trained on smaller datasets.
+    We use these metrics to successfully tune hyperparameters for 18 low-resource languages provided by the Classical Languages ToolKit.    
+    The smallest of these languages (Ancient Gujarati) has only 1813 unique tokens available.
 
- %however, evidence suggests that analogies may not perform equally well across training contexts.
- %Specifically, this method has proven non-trivial to adapt to languages beyond English and empirical evidence suggests that it requires large amounts of training data.
- As a result, those working in low resource or specialized settings have lacked a standard method to evaluate the quality of word embeddings.
- To address this problem, we propose two different intrinsic evaluation methods, which achieve greater performance sensitivity than the analogy task in low resource settings.
-  We demonstrate the flexibility of these methods by using them to tune embeddings for $18$ low resource languages as well as the full list of unicode emojis.
-   Furthermore, our methods are designed such that custom test sets can be developed semi-automatically in over $400$ different languages, which helps increase access for research in areas previously inhibited by low amounts of data.
+    %The standard method for improving results on low-resource languages is to develop new machine learning algorithms that more efficiently use the available data.
+    %In this paper, however, we argue that 
+%
+%There has been a strong push in recent years for improved natural language processing on low-resource languages.
+%Little data exists for these languages,
+%and so trained machine learning models have low accuracies.
+%Recent work has focused on solving this problem by developing more sample-efficient algorithms that can achieve higher accuracies with less data.
+%We argue, however, that standard evaluation tasks are not sensitive enough to measure model quality in the low-resource setting,
+%and new performance measures tailored to the low-resource setting are required.
+%%In this paper, we focus on evaluating word embeddings.
+%Specifically, we argue that the standard analogy task is not suitable for the low-resource setting and we introduce two new evaluation metrics designed for the low-resource setting.
+%%The analogy task is not suitable for low-resource languages,
+%however, because good performance requires a large amount of training data and meaningful analogies can be difficult to create.
+%As a result, researchers in working in low-resource settings have created many ad-hoc methods for 
+%
+ %%however, evidence suggests that analogies may not perform equally well across training contexts.
+ %%Specifically, this method has proven non-trivial to adapt to languages beyond English and empirical evidence suggests that it requires large amounts of training data.
+ %As a result, those working in low resource or specialized settings have lacked a standard method to evaluate the quality of word embeddings.
+ %To address this problem, we propose two different intrinsic evaluation methods, which achieve greater performance sensitivity than the analogy task in low resource settings.
+  %We demonstrate the flexibility of these methods by using them to tune embeddings for $18$ low resource languages as well as the full list of unicode emojis.
+   %Furthermore, our methods are designed such that custom test sets can be developed semi-automatically in over $400$ different languages, which helps increase access for research in areas previously inhibited by low amounts of data.
+
 \end{abstract}
 
 
 %%% Copied this from other document
 \section{Introduction}
+There has been a strong push in recent years for improved natural language processing on low-resource languages.
+Little data exists for these languages,
+and so trained machine learning models have low accuracies.
+Recent work has focused on solving this problem by developing more sample-efficient algorithms that can achieve higher accuracies with less data.
+We argue, however, that standard evaluation tasks are not sensitive enough to measure model quality in the low-resource setting,
+and new performance measures tailored to the low-resource setting are required.
+%In this paper, we focus on evaluating word embeddings.
+Specifically, we argue that the standard analogy task is not suitable for the low-resource setting and we introduce two new evaluation metrics designed for the low-resource setting.
 \label{sec:intro}
 
-%Word embeddings are important in modern NLP models.
-Word vector embeddings are widely used in Natural Language Processing (NLP),
-and have become a critical tool for achieving state-of-the-art performance in many tasks \cite{}.
+\citet{mikolov2013efficient} introduced the word2vec model for training word embeddings and the analogy task for evaluating them.
+In the analogy task, the goal is to answer questions similar to
+\begin{equation*}
+    \texttt{Man is to King as Woman is to ?}
+\end{equation*}
+%\begin{equation}
+%\texttt{king} - \texttt{man} + \texttt{woman} \approx \texttt{queen}
+%.
+%\end{equation}
+by exploiting the linear structure of the word embeddings.
+Follow on work has focused on developing better algorithms for training word embeddings as measured by performance on the analogy task.
+GloVe \citep{pennington2014glove} and FastText \citep{bojanowski2016enriching} are the two most prominent examples,
+although dozens of alternatives have now been proposed.
+The analogy task has proven so successful for English language research because it correlates well with performance on a wide range of downstream tasks \citep{wang2019evaluating}.
 
-\citet{mikolov2013efficient} showed that the word2vec model produces embeddings with useful linear structure, and this structure can be used to solve analogy tasks.
-\begin{equation}
-\texttt{king} - \texttt{man} + \texttt{woman} \approx \texttt{queen}
-.
-\end{equation}
-To evaluate the quality of their word embeddings,
-\citet{mikolov2013efficient} created a $14$ category evaluation set commonly called the Google Analogy Test Set. 
-Importantly, good performance on this analogy test set correlates with good performance on downstream tasks like sentiment analysis \cite{}, part of speech tagging \cite{}, and named entity recognition \cite{}.
-Improvements to the standard word2vec algorithm such as FastText \cite{bojanowski2016enriching} and GloVe \cite{pennington2014glove} have demonstrated their efficacy by demonstrating improvements on the Google Analogy Test Set.
+While most word embeddings algorithms focus on the high-resource domain,
+several recent works have developed new algorithms designed for training models in the low-resource setting \cite{adams-etal-2017-cross,jiang2018learningword,gupta-etal-2019-improving,jungmaier-etal-2020-dirichlet}.
+Unfortunately, each of these works evaluate their method only in a simulated low-resource environment using English text and not on any actual low-resource languages.
+They do this specifically because no evaluation metrics exist that are suitable for their low-resource target languages.
+They also do not use the analogy task to measure performance.
+Instead, they use word similarity tasks.
+These tasks include datasets based on the English-language WordNet:
+WordSim Similarity \citep{zesch2008using}%
+%\footnote{
+%The WordSim Similarity \citep{zesch2008using} task is the most similar to our proposed $\topk$ and $\OddOneOut$ tasks,
+%since they use the wiktionary database\footnote{\url{https://wiktionary.org}} and we use the wikidata database.
+%The difference is that: their test set construction technique requires a complicated graph algorithm that requires input from a word bank (they use WordNet for English and GermaNet for German).
+%In contrast, our techniques are algorithmically simpler, are easy to interpret, require no external data inputs, and are easily extended to the 400 languages available on wikidata.
+%}
+WordSim Relatedness \citep{agirre2009study},
+and datasets based on human annotation of English language word pairs:
+WordSim363 \citep{finkelstein2001placing},
+Mechanical Turk \citep{radinsky2011word},
+MEN \citep{bruni2012distributional}.
+These word similarity tasks are more sensitive to their low-resource experimental design than the analogy task,
+but they cannot be easily used in non-English languages because they require the manual generation of new datasets for each language.
 
-At the same time, only small consideration has been given to areas where the analogy task either cannot be applied or fails to capture meaningful differences in quality between sets of embeddings.
+%Due to Zipf's law, some words will be very infrequent.
+%Analogies are known to not work well on these infrequently used words.
 
-Bias-variance tradeoff in dimensionality of word embeddings \cite{yin2018dimensionality}
+Perhaps surprisingly, there is growing body of digital humanities work where English language text is low-resource.
+This occurs when researchers attempt to compare how to bodies of text use words differently over different time periods \cite[e.g.][]{hamilton2016diachronic,hamilton2016cultural,kutuzov2018diachronic,kozlowski2019geometry,dubossarsky2017outta,tang2018state,szymanski2017temporal,liang2018dynamic,chen2017understanding}
+or different political ideologies \citet{azarbonyad2017words}
+or different twitter users \cite{kulkarni2015statistically}.
 
-\subsection{Weaknesses of Google Analogy Test Set}
+Our contributions can be summarized with the following three points.
 
-People have talked about the weaknesses of the google analogy set, ie unbalanced between semantic and syntactic categories, mostly syntactic, when we usually care more about semantics.
-\cite{}
-
-\subsection{Low-resource word embeddings}
-
-The analogy task is not suitable for low-resource languages,
-however, because good performance requires a large amount of training data and meaningful analogies can be difficult to create.
-As a result, researchers in working in low-resource settings have created many ad-hoc methods for 
-
-English can be a low resource setting when studied diachronically \cite[e.g.][]{hamilton2016diachronic,hamilton2016cultural,kutuzov2018diachronic,kozlowski2019geometry,dubossarsky2017outta,tang2018state,szymanski2017temporal,liang2018dynamic,chen2017understanding}.
-
-\citet{azarbonyad2017words} considers splits over different political ideologies.
-
-\cite{kulkarni2015statistically} similar.
-Along this line of work, \citet{gonen2020simple} is the most similar to ours.
-They propose a new method for comparing the similarity of two word embeddings in order to find words that are used differently.
-Their method assumes that quality word embeddings have already been trained,
-and our evaluation metrics provide a way to ensure that this training is done well.
-
-\citet{NIPS2013_5165} improves the word2vec skipgram model with noise contrastive estimation (NCE).
-They report requiring 10x less computation and 4x less training data to get the same results.
-\citet{gupta-etal-2019-improving} introduce an extension to the skipgram and fasttext models that uses kernel PCA to reduce the amount of data needed during the training procedure.
-(i.e., their method requires less data to train good models.)
-They still use the
-
-Due to Zipf's law, some words will be very infrequent.
-Analogies are known to now work well on these infrequently used words.
-
-\subsection{Highly multilingual word embeddings}
-\citet{al2013polyglot} trained word2vec embeddings on 100 different languages using Wikipedia as the training data.
-\citet{grave2018learning} extended this work by training FastText embeddings on 157 languages using data from the Common Crawl project.
+\label{sec:contributions}
 \begin{enumerate}
-\item
-For both papers, the Hindi language had the smallest amount of training data,
-with 23 million and 1.8 billion tokens, respectively.
-In Section \ref{sec:}, we consider languages with significantly less training data.
-For example, the Ancient Hindi language contains only 0.6 million tokens,
-and we are still able to generate meaningful word embeddings using our evaluation metrics.
-
-\item
-Due to the difficulty of evaluating so many languages, however, the authors evaluate the embeddings only on 10 languages,
-and the other 147 remain unevaluated.
-
+    %\item 
+    %We show that the analogy task introduced by \citet{mikolov2013efficient} is not suitable for evaluating low-resource word embeddings.
+    \item 
+    We introduce the first word embedding evaluation tasks designed specifically for the low-resource setting, $\OddOneOut$ and $\topk$.
+    Code for computing these metrics is released as an open source Python library.%
+    \footnote{
+        URL hidden for blind review.
+    }
+    \item 
+    We introduce a method for automatically generating test datasets for the $\OddOneOut$ and $\topk$ tasks in the 581 languages supported by the wikidata project.%
+        \footnote{For the full list of languages supported, see \url{https://www.wikidata.org/wiki/Help:Wikimedia_language_codes/lists/all} \fixme{You wrote 461 without a citation.  Which is correct?}}
+    All previous evaluation methods work on only a small number of languages (typically just English),
+    and require significant manual work to adapt to new languages.
+	\item 
+    We perform the largest existing multilingual evaluation on low-resource languages.
+    Specifically, we provide word embeddings for the 18 languages of the Classical Languages ToolKit (CLTK) library \fixme{bibtex format is wrong \citep{johnson2014}}.
+    We further introduce a new downstream task called the Language Comparison Task (LCT) that lets us map which topics are included in these classical language corpora.
 \end{enumerate}
-
-%We need high quality word embeddings.
-%Caveats: 
-%- analogies were evaluated on english dataset only
-%- word embeddings were trained in a resource rich scenario
-%Still, analogies have become the go-to instrinsic evaluation method.
-%- Many people who are trying to make good word embeddings in other languages have simply translated the google analogy set into their chosen language and then added a couple of new categories specific to their language. 
-%- 3 CosMul and other attempts to modify the evaluation task...still buying in to the premise
-%
-%But, none of these approaches have really addressed the issue of not having enough data and difficulty of adapting the analogy task.
-%
-
-% other stuff
 
 \begin{figure}
 \centering
@@ -188,58 +208,42 @@ Though $\OddOneOut$ seems the clear victor of these methods, experimentation in 
 \label{fig:size_vs_acc}
 \end{figure}
 
-
-Most work regarding word embeddings has been carried out in resource rich settings. 
-In particular, the original word2vec embeddings were trained on a GoogleNews corpus containing 6 billion English tokens of which 783 million were unique \cite{mikolov2013efficient}.
- Unsurprisingly, greater amounts of training data leads to more accurate embeddings.
-  But in reality, there are many domains in which this amount of data is impractical or even impossible to obtain. 
-  Consider for example, a low resource language such as Telugu or a historical language like Latin.
-  Furthermore, resource rich languages can quickly become low resource when considered from a specialized perspective.
-   Those studying the evolution of language over time often require very specific corpora which in turn restricts the quantity of data. 
-
-More recently, embeddings have even been generated for tokens that serve the purpose of words, but are not considered words in the traditional sense.
- The clearest example of these non-traditional embeddings is emoji, which have emerged as an important feature of natural language data in social media.
-  In this setting it is unclear whether the analogy task should be applied and if so how to do so systematically and at scale.
-
-In this paper, we demonstrate that the analogy task is not always suitable for evaluating quality of word embeddings,
- particularly when training resources are limited and when working in niche or specialized domains. 
- As a solution to this problem, we propose $\OddOneOut$ and $\topk$, two alternative evaluation methods which provide greater usability in low resource settings and are more general in nature.
-  To further increase flexibility in deployment of embedding evaluation systems we also present Wikidata as a tool for generating test sets for these methods in up to $461$ languages. 
-
-
-%\section{Contributions}
-%\label{sec:contributions}
-%\begin{itemize}
-%	\item We show that the analogy task introduced by Mikolov et. al is not always suitable for evaluating the quality of word embeddings, particularly when embeddings are trained on small amounts of data.
-%	\item We introduce two new methods for evaluating embeddings, $\OddOneOut$ and $\topk$.
-%	\begin{itemize}
-%		\item Use $\OddOneOut$ and $\topk$ to train emoji2vec model achieving comparable results to \citep{Eisner et al.}
-%		\item These methods are more general (works for emojis and word embeddings)
-%	\end{itemize}
-%	\item We use wikidata to automatically generate test sets in multiple languages
-%\end{itemize}
-
 The remainder of the paper is organized as follows.
-Section \ref{sec:method} introduces the $\topk$ and $\OddOneOut$ tasks.
-Section \ref{sec:experiments}
-Section \ref{sec:mca}
+Section \ref{sec:method} formally defines the $\topk$ and $\OddOneOut$ tasks.
+Section \ref{sec:experiments} empirically demonstrates that these tasks are better than the analogy task in low-resource settings.
+We use a synthetic English language experimental design common in previous work,
+and demonstrate the versatility of these evaluation metrics by applying them to an emoji embedding task for which the analogy task is not even well defined.
+Section \ref{sec:mca} computes word embeddings for the 18 languages provided by CLTK.
+We further introduce our technique for using wikidata to automatically generate the test sets for the $\OddOneOut$ and $\topk$ tasks and the LCT task and provide a semantic analysis of the topics covered in each of these 18 language copora.
+Section \ref{sec:discussion} concludes by discussing how extensions to this work could serve communities working with low-resource languages.
 
 \section{Evaluation Methods}
 \label{sec:method}
-From a technical standpoint, our methods are quite simple and designed to be as generally applicable as possible.
- Both $\OddOneOut$ and $\topk$ require a test set which consists of groups of categories where each category contains words that are semantically similar. 
- The $\OddOneOut$ method seeks to identify the word that does not belong when presented with a group of words.
-  For a given word, $\topk$ finds the k most similar words according to the model and compares them to words that belong to the semantic category from which the word was chosen.
+The $\OddOneOut$ and $\topk$ tasks are simple and generally applicable.
+Both tasks require a test set in the same easy to generate format.
+The test set consists of a list of categories,
+and each category contains a list of words that belong to that category.
+For example, the category \texttt{fruit} might contain the words \texttt{banana}, \texttt{apple}, and \texttt{orange}. \fixme{use a real example.}
+The $\OddOneOut$ task measures a model's ability to identify words that are unrelated to the category,
+and the $\topk$ task measures a model's ability to identify words that are related to the category.
 
-
-We now formalize the methods. 
-Assume that there are $m$ categories, that each category has $n$ words, that there are $v$ total words in the vocabulary, and that the words are embedded into $\R^d$.
+Formally,
+assume that there are $m$ categories,
+that each category has $n$ words%
+\footnote{
+    In practice, the number of words per category can vary for each category,
+    however for notational simplicity we assume that each category has the same number of words.
+},
+that there are $v$ total words in the vocabulary,
+and that the words are embedded into $\R^d$.
 Let $c_{i,j}$ be the $j$th word in category $i$,
 and let $C_i = \{c_{i,1}, c_{i,2}, ..., c_{i,n}\}$ be the $i$th category.
 
 \subsection{The $\topk$ method}
 Let $\FindMostSimilar(k,w)$ return the $k$ most similar words in the vocabulary to $w$.
-We define the $\topk$ score for class $i$ to be
+We use the cosine distance in all our experiments,
+but any distance metric can be used.
+Next, define the $\topk$ score for class $i$ to be
 \begin{equation}
     \topk(k,i) = \frac{1}{n}\sum_{j=1}^n \frac{1}{k}\sum_{\mathrlap{x \in \FindMostSimilar(k, c_{i,j})}} \indicator{x \in C_i}
 \end{equation}
@@ -259,7 +263,7 @@ So the runtime of $\topk(k,i)$ is $O(dnk^2v)$
 and the runtime of $\topk(k)$ is $O(dnmk^2v)$.
 Typically $k$ is small (we recommend $k=3$ in our experiments),
 and so the runtime is linear in all of the interesting parameters.
-In particular, it is linear in both the size of our input data and evaluation set.
+In particular, it is linear in both the size of our vocabulary, the number of categories in the test set, and the size of the categories.
 
 \subsection{The $\OddOneOut$ method}
 Define the $\OddOneOut$ score of a set $S$ with $k$ words with respect to a word $w\not\in S$ as
@@ -296,13 +300,14 @@ where
 We define the $k$th order $\OddOneOut$ score of a category $i$ to be
 \begin{equation}
     \OddOneOut(k,i) = \frac 1 {|P|} \sum_{\mathclap{(S,w) \in P}} \OddOneOut(S,w)
+    \label{eq:OOOki}
 \end{equation}
 where
-\begin{equation}
-    P = \{ (S, w) : S \text{~is a combination of $k$ words from $C_i$}, \text{and~} w \in V-C_i \}
+\begin{multline}
+    P = \{ (S, w) : S \text{~is a combination of $k$ words}\\\text{from $C_i$}, \text{and~} w \in V-C_i \}
     .
     \label{eq:P}
-\end{equation}
+\end{multline}
 In Equation \eqref{eq:P} above,
 the total number of values that $S$ can take is ${n \choose k} = O(n^k)$,
 and the total number of values that $w$ can take is $O(v)$,
@@ -321,18 +326,27 @@ In real world applications, $m >\!\!> k$, and so $\OddOneOut$ will take consider
 In particular, the Mikolov test evaluations in Section \ref{sec:experiments} below use $m=50$ and $k=3$,
 so the $\OddOneOut(k)$ score takes approximately 800x longer to compute.
 
+To solve this problem, we use a sampling strategy.
+Let $\tilde P$ denote the set of $p$ samples without replacement from the set $P$.
+Then we rewrite Equation \ref{eq:OOOki} as
+\begin{equation}
+    \OddOneOut(k,i) = \frac 1 p \sum_{\mathclap{(S,w) \in \tilde P}} \OddOneOut(S,w)
+\end{equation}
+With this definition, the runtime of $\OddOneOut(k)$ is $O(dkmpv)$,
+which is linear in all the parameters of interest.
+\fixme{In our experiments, we found $p=1000$ to give sufficiently accurate results without taking too much computation.}
+
 \section{Experiments}
 \label{sec:experiments}
 
 We demonstrate the usefulness of our evaluation metrics with two experiments.
-First, we show that the $\OddOneOut$ and $\topk$ metrics are better measures of word embedding quality than the analogy metric in the low-resource regime.
+First, we show that the $\OddOneOut$ and $\topk$ metrics are better measures of word embedding quality than the $\analogy$ metric in the low-resource regime.
 Second, we show that the $\OddOneOut$ and $\topk$ metrics are useful for model selection in an emoji embedding task where the analogy task cannot be applied.
 This experiment also demonstrates that the $\OddOneOut$ and $\topk$ metrics correlate with downstream task performance.
 
-\subsection{Small dataset word embeddings}
+\subsection{English Experiments}
 
 This experiment measures the performance of the $\OddOneOut$, $\topk$, and $\analogy$ metrics as a function of data set size.
-\fixme{Figure \ref{fig:size_vs_acc} shows that the $\OddOneOut$ and $\topk$ metrics are $\analogy$.}
 
 %Figure \ref{fig:data_vs_methods} shows the results of the evaluation of these models on three intrinsic tasks-- \texttt{Analogy}, \texttt{OddOneOut}, and \texttt{Topk}.
  %We see that for the various tasks both \texttt{OddOneOut} and \texttt{Topk} start to see an increase in performance with roughly $32x$ less data compared to \texttt{Analogy}. 
@@ -374,27 +388,22 @@ which are known to work well in many contexts.
 Importantly, we do not tune these hyperparameters for each low-resource dataset.
 Instead, we use the same hyperparameters because our goal is to isolate the effects of dataset size on the three evaluation metrics.
 
+For the analogy task, we use the standard Google Analogy Test Set introduced by \citep{mikolov2013efficient}.
+This test set contains 14 sets of analogies,
+and each analogy set contains 2 categories that are being compared.
+For example,
+the countries-capitals analogy set which has analogies like
+\begin{equation}
+\texttt{England} - \texttt{London} + \texttt{Paris} \approx \texttt{France}
+\end{equation}
+contains both a list of countries and a list of capitals.
+We generate test sets for the $\OddOneOut$ and $\topk$ tasks from the 28 categories in the Google test set.
+%In doing so, we lose information about the relatedness between categories.
+%The fact that the analogy task
+
+The results are shown in Figure \ref{fig:size_vs_acc}.
 \fixme{
-In order to apply the evaluation metrics,
-we need test sets for each metric.
-We cannot use the exact same test set because the $\analogy$ metric requires a test set with different formatting than the $\OddOneOut$ and $\topk$ metrics.
-In the $\analogy$ task, we are given a set of tuples of the form
-\begin{equation*}
-    cat1a,cat1b,cat2a,cat2b
-\end{equation*}
-where the
-%To calculate accuracies we use the Google analogy test set to which is easily adapted for use with $\OddOneOut$ and $\topk$ by splitting each relationship pair into two separate categories.
-
-To ensure a fair comparison,
-we use the Google Analogy Test Set on the $\analogy$ directly, 
-and construct a modified version of this dataset that can be used for the $\OddOneOut$ and $\topk$ metrics.
-
-We use the Google Analogy Test set.
-%To ensure fairness in evaluation, we use the 
-The format of the test sets for the $\analogy$ task is different than the format for the $\topk$ and $\OddOneOut$ tasks.
-The $\analogy$ task test set is forma
-We speculate that because the analogy task is measuring this extra information,
-it requires more training data.
+The $\OddOneOut$ and $\topk$ metrics show higher results
 }
 
 \begin{figure*}
@@ -422,42 +431,61 @@ it requires more training data.
 \end{figure}
 
 This second experiment demonstrates the versatility of our methods by applying them to the domain of emoji embeddings.
+We show that our generic $\topk$ and $\OddOneOut$ metrics perform as well as a custom designed emoji evaluation metric,
+but our metrics are more versatile.
 
-Emoji embeddings are an important topic of study because they are used to improve the performance of sentiment analysis systems \cite[e.g.]{felbo2017using,barbieri2017emojis,ai2017untangling,wijeratne2017semantics,al2019smile,eisner2016emoji2vec}. 
+Emoji embeddings are an important topic of study because they are used to improve the performance of sentiment analysis systems \cite[e.g.][]{eisner2016emoji2vec,felbo2017using,barbieri2017emojis,ai2017untangling,wijeratne2017semantics,al2019smile}. 
 Unfortunately,
 the standard analogy task is not suitable for evaluating the quality of emoji embeddings for two reasons.
 First, emoji embeddings are inherently low-resource---%
 only 3000 unique emojis exist in the Unicode standard---%
 and thus evaluation techniques specifically designed for the low-resource setting will be more effective.
 Second, the semantics of most emojis do not allow them to be used in any analogy task.
-In particular, the original emoji2vec paper \cite{eisner2016emoji2vec} identifies only \fixme{5} possible emoji analogies.
+In particular, the original emoji2vec paper \cite{eisner2016emoji2vec} identifies only \fixme{5?} possible emoji analogies.
+
 In order to tune their emoji embeddings, \citet{eisner2016emoji2vec} therefore do not use the analogy task,
-and instead use an ad-hoc ``emoji-description classification'' method that required the creation of a test set with manually labeled emotion-description pairs.
+and instead introduce an ad-hoc ``emoji-description classification'' metric that required the creation of a test set with manually labeled emotion-description pairs.
+Due to the expense of manually creating this test set,
+only \fixme{64?} of the 3000 Unicode emojis are included.
+The $\topk$ and $\OddOneOut$ metrics improve on the ``emoji-description classification'' metric because they are able to evaluate the quality of all emojis and require no manual test set creation.
+For our test set categories, we use the categories that the Unicode standard provides for each emoji.%
+\footnote{For the full list of categories, see \url{https://unicode.org/Public/emoji/13.0/emoji-test.txt}}
 
+To test the performance of the three metrics,
+we use them to tune the hyperparameters of an emoji2vec model.
+To ensure the fairest comparison possible, we use the original emoji2vec code for training and model selection,
+changing only the function call to the metric used.
+In particular, this means we are only embedding and evaluating on the subset of \fixme{64?} emojis supported by the ``emoji-description classification'' metric.
+The code allows tuning the model's learning rate, \fixme{insert other options here}.
+We found that the learning rate was the only hyperparameter to have a significant impact,
+and Figure \ref{fig:emoji} shows how the learning rate effects the performance on the three evaluation metrics and the performance on a downstream sentiment analysis task.
+All three metrics show optimal performance with a learning rate of approximately $8\times10^{-4}$,
+which also results in the best performance on the downstream task.
+This indicates that our $\topk$ and $\OddOneOut$ metrics generate the same models as the specialized ``emoji-description classification'' metric,
+but our metrics have the advantage of being simpler, more widely applicable, and easier to generate test data for.
 
-Recent work \citet{guntuku2019studying} combines uses the subdivision technique (Section \ref{}) to study how emoji are used differently in different parts of the world.
+\fixme{Explain model selection and that comparison of metrics should not be done.}
 
-The simple and general design of our methods allows them to be easily adapted to intrinsically evaluate emoji embeddings.
-We demonstrate this by training our own emoji embeddings using the code from \citet{eisner2016emoji2vec},
-but we use $\OddOneOut$ and $\topk$ as the model selection metric.
-The semantic categories of emojis are trivial to generate from unicode's full emoji list.%
-\footnote{\url{https://unicode.org/Public/emoji/13.0/emoji-test.txt}} 
-
-In addition to intrinsic evaluation of emoji2vec with their custom method, \cite{eisner2016emoji2vec} also deploy their vectors in a downstream sentiment analysis of tweets.
-We verify the performance of our tuned emoji embeddings by also evaluating performance on this same sentiment analysis task.
-Figure \ref{fig:emoji} shows the results of evaluation, we find that our embeddings were able to reproduce \cite{eisner2016emoji2vec} performance on the downstream task.
-
-
-%Biblical
 \section{Multilingual Content Analysis}
 \label{sec:mca}
 
-Third, we use the $\OddOneOut$ and $\topk$ metrics to select the hyperparameters for models trained on 17 ancient languages provided by the CLTK \cite{} library.
-This experiment 
+In this section we perform the first highly multilingual analysis of word embeddings for low-resource languages.
+We analyze 18 languages provided by the Classical Languages ToolKit (CLTK) library \citep{johnson2014}.%
+\footnote{
+    Specifically, we analyzed all languages for which CLTK provides both a training corpus and a tokenization function,
+    as these are the minimum requirements needed for training word embeddings.
+}
+Each of these languages is ``extinct'' in the sense that no new native text will ever be generated in these languages.
+To get better models on these languages, it is impossible to collect more data,
+we must develop better techniques for the low-resource setting.
+The largest of these language datasets is Ancient Greek, with 37.8 million tokens,
+and the smallest is Ancient Gujarati with only 1813 tokens.
 
-In Section \ref{sec:mca} below, we use these 
+First we describe a procedure for automatically generating test set data for the $\OddOneOut$ and $\topk$ tasks using wikidata.
+Then, we describe our model training and selection procedure for each language.
+Finally, we perform the LCT task and perform an interlanguage analysis of the corpora's content.
 
-\subsection{Automatic Test Set Generation with Wikidata}
+\subsection{Test Set Generation with Wikidata}
 
 One of the most difficult and time consuming steps in the process of generating of high quality word embeddings is the creation of a comprehensive test set.
  Consequently, one of the biggest advantages of the $\OddOneOut$ and $\topk$ methods is that compatible test sets can be semi-automatically generated in hundreds of languages.
@@ -467,14 +495,19 @@ along with its relationship to other items.
 Simple queries constructed using the Wikidata Query Service can be used to return semantic categories of words that can be included in a test set.
 
 Using Wikidata we were able to reconstruct all of the semantic categories contained within the Google analogy set with the option of greater customization and more categories.
- Additionally, Wikidata supports the translation of queried items into 461 languages, allowing test sets to easily be converted between languages.
-  Though not all items have translated labels in all 461 languages, support is quite extensive and will only get better. 
+Additionally, Wikidata supports the translation of queried items into 461 languages, allowing test sets to easily be converted between languages.
+Though not all items have translated labels in all 461 languages, support is quite extensive and will only get better. 
+\fixme{Is 461 correct?}
 
 One of the disadvantages of using Wikidata is that syntactic categories are much harder to construct;
- however, since semantic categories are usually more difficult to generate 
- and require more arbitrary decisions this approach is still very valuable.
+however, since semantic categories are usually more difficult to generate 
+and require more arbitrary decisions this approach is still very valuable.
 
-\subsection{Classical Languages Experiments}
+\fixme{What are the exact categories used?}
+
+\fixme{Does the library allow the easy construction of these categories?}
+
+\subsection{Model Selection}
 
 % Improved Table - Combined Score
 \begin{table*}[t]
@@ -524,35 +557,46 @@ Using $\OddOneOut$ and $\topk$ allows us to tune models trained on corpora with 
 \label{table:language}
 \end{table*}
 
-An obvious application of $\OddOneOut$ and $\topk$ is in training models for under-resourced languages. 
-The Classical Language Toolkit (CLTK) \cite{johnson2014} is one such ongoing project supporting nlp for various classical, low resource, and often historical languages.
-To confirm the efficacy of our methods in the low resource setting, we train and tune word embeddings on all languages supported by the Classical Language Toolkit which contain at least one downloadable corpus and a tokenization tool. 
-In total this leaves us with $18$ low resource languages.
+There are 7 hyperparameters for our language models,
+and we use the random search method \citep{bergstra2012random} to tune these hyperparameters.
+Random search is simple to implement, computationally efficient, easy to parallelize, and avoids the curse of dimensionality inherent to grid search and Bayesian optimization methods.
+\fixme{
+Table \ref{table:hyperparam} defines the hyperparameters and the range of values sampled for each.
+Should this be a table or included directly in the text?
+\begin{table}
+    \includegraphics[width=\columnwidth]{example-image-a}
+    \caption{Hyperparameters.}
+    \label{table:hyperparam}
+\end{table}
+}
 
-For each language we preprocess all corpora available through CLTK, using their normalization and tokenization tools where appropriate. 
-We then perform a randomized grid search over the key model parameters consisting of 100 samples. 
-The key hyperparameters we searched over can be found in Table \ref{table:language}. 
-After training the model we perform an intrinsic evaluation for the embeddings on the corresponding language specific test set 
-and pick the model that had the highest \texttt{Combined Score} 
-which is calculated as the harmonic mean of $\OddOneOut$ and $\topk$.
+To ensure a fair comparison,
+we randomly sampled 100 sets of hyperparameter combinations.%
+\footnote{We found that 100 combinations was sufficient to give good results without being too computationally burdensome.}
+Then train each language on this same set of hyperparameters.
+The best results are reported in Table \ref{table:language}.
+The optimal set of hyperparameters is different for each language,
+which underscores the importance of proper model tuning in the low-resource regime.
+Whereas all previous highly multilingual work used the same set of hyperparemeters for all models,
+we show that this is not an optimal strategy.
 
-Although the parameter combinations searched over for each language were the same,
-the best model for each language contained a unique set of parameters. 
-This supports the need for an intrinsic tuning method for word embeddings so that highest performance can be achieved. 
-The tuning results in Table \ref{table:language} also seem to indicate that fastText models perform better than word2vec in low resource scenarios 
- due to the training of n-grams.
+\subsection{Language Comparison Task}
 
+We now introduce a novel downstream task for word embeddings called the \emph{Language Comparison Task} (LCT).
+The goal of this task is to better visualize the topics written about in our 18 language corpora.
+We choose three religious topics: Biblical Figures, Facets of Buddhism, and Facets of Hinduism.
+Each of these topics has an entry in Wikidata,
+\fixme{I'm not sure what the correct wikidata terminology is here.}
+and so it is easy to create categories based on these topics in each language.
+Figure \ref{fig:downstream} provides a list of words associated with each topic.
 
-Aside from intrinsic evaluation, our methods can be leveraged as a qualitative downstream task we call multilingual content analysis.
-The goal of the task is to determine the degree to which some concept or category is captured by a set of word embeddings. 
-We implement this by using Wikidata to construct $3$ categories of interest--Biblical Figures, Facets of Hinduism, and Facets of Buddhism--and then evaluate them using $\OddOneOut$ and $\topk$. 
-The performance on this task demonstrates the degree to which our models understand the semantics of the chosen topics 
-and provides insight regarding the content they were trained on.
+For each language and topic, we compute the $\topk$ and $\OddOneOut$ metrics and plot the results in Figure \ref{fig:downstream}.
+\fixme{explain significance}
 
-With intentionally selected categories we are able draw out the differences in content between the different language models
-that in many cases matches our intuition. 
-By evaluating on a category of biblical figures we see highest performance from the Hebrew and Latin models followed by other European languages; 
-whereas Facets of Buddhism and Facets of Hinduism see high performance from the Indic language models.
+%With intentionally selected categories we are able draw out the differences in content between the different language models
+%that in many cases matches our intuition. 
+%By evaluating on a category of biblical figures we see highest performance from the Hebrew and Latin models followed by other European languages; 
+%whereas Facets of Buddhism and Facets of Hinduism see high performance from the Indic language models.
 
 Perhaps more interesting, this downstream task also gives rise to circumstances in which $\topk$ performance exceeded $\OddOneOut$. 
 In some cases (like Middle High German on Biblical Figures) $\topk$ merely surpasses $\OddOneOut$ 
@@ -562,14 +606,17 @@ thus it is valuable to have both methods at our disposal.
 Since this exact relationship is still not fully understood we tune and evaluate models using both metrics 
 and compute the harmonic mean to choose the most accurate model.
 
+\fixme{
+    There's a simpler way to measure how much each corpus discusses each category:
+    simply count the number of times each word from the category is used.
+    Can we explain why our method is better than this simpler method?
+}
+
 \begin{figure*}
 \centering
 \resizebox{6in}{2in}{\includegraphics{biblical-raw.pdf}}
 \resizebox{6in}{2in}{\includegraphics{buddhism-raw.pdf}}
 \resizebox{6in}{2in}{\includegraphics{hinduism-raw.pdf}}
-%\includegraphics{buddhism-raw.pdf} 
-%\includegraphics{hinduism-raw.pdf} 
-%}
 
 \caption{
     (\textbf{Top})
@@ -584,7 +631,8 @@ and compute the harmonic mean to choose the most accurate model.
     (\textbf{Bottom})
     Similar to Figure \ref{fig:biblical} we see languages more closely related to the topic of the category achieving better performance, in this case primarily the Indic languages. 
     Interstingly, our Bengali embeddings performed poorly on this category suggesting that the corpus did not refer heavily to the Hindu context.
-    }
+}
+\label{fig:downstream}
 \end{figure*}
 
 %animals
@@ -595,9 +643,68 @@ and compute the harmonic mean to choose the most accurate model.
 %\label{fig:multilingual}
 %\end{figure*}
 
-\section{Related Work}
-\label{sec:related}
+\section{Discussion}
+\label{sec:discussion}
 
+\fixme{
+Don't actually make any changes here.
+The notes in this section are just for me.
+}
+
+\fixme{
+    \citet{michel-etal-2020-exploring} study Hiligaynon
+}
+
+Not yet using wikidata to its fullest extent.
+Wikidata categories form a hierarchy.
+More accurate evaluations could be done by using all categories in the hierarchy,
+weighting top-level categories higher than leaf categories.
+This has computational challenges and so we reserve this for future work.
+
+\fixme{Where should this go?
+\citet{gonen2020simple} propose a new method for comparing the similarity of two word embeddings in order to find words that are used differently.
+Their method assumes that quality word embeddings have already been trained,
+and our evaluation metrics provide a way to ensure that this training is done well.
+}
+
+\fixme{Where should this go?
+\citet{camacho-collados-navigli-2016-find} propose the \texttt{OutlierDetection} metric that is superficially similar to our $\OddOneOut$ metric.
+Differences include: their metric is designed to evaluate only a single category relative to itself and is therefore relatively efficient to compute.
+Our metric is designed to evaluate many categories relative to all words in the training data.
+A naive computation is therefore much more expensive to compute,
+and so we introduce a sampling strategy to make the metric computationally feasible.
+We also demonstrate that our metric is suitable for the low-resource regime (they only evaluate on datasets with billions of tokens) and make our method available in an easy-to-use open source python library.
+}
+
+\fixme{Add this?
+Recent work \citet{guntuku2019studying} combines uses the subdivision technique (Section \ref{}) to study how emoji are used differently in different parts of the world.
+This technique turns high-resource tasks into low-resource tasks,
+and so if you start with a low-resource task it will become even more low-resource.
+}
+
+\fixme{
+Where does this go?
+
+\citet{al2013polyglot} trained word2vec embeddings on 100 different languages using Wikipedia as the training data.
+\citet{grave2018learning} extended this work by training FastText embeddings on 157 languages using data from the Common Crawl project.
+\begin{enumerate}
+\item
+For both papers, the Hindi language had the smallest amount of training data,
+with 23 million and 1.8 billion tokens, respectively.
+In Section \ref{sec:}, we consider languages with significantly less training data.
+For example, the Ancient Hindi language contains only 0.6 million tokens,
+and we are still able to generate meaningful word embeddings using our evaluation metrics.
+
+\item
+Due to the difficulty of evaluating so many languages, however, the authors evaluate the embeddings only on 10 languages,
+and the other 147 remain unevaluated.
+\end{enumerate}
+}
+
+
+\fixme{where does this go?
+Bias-variance tradeoff in dimensionality of word embeddings \cite{yin2018dimensionality}
+}
 
 
 %\section{Related Work}

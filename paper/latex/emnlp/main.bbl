@@ -1,5 +1,22 @@
-\begin{thebibliography}{30}
+\begin{thebibliography}{41}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Adams et~al.(2017)Adams, Makarucha, Neubig, Bird, and
+  Cohn}]{adams-etal-2017-cross}
+Oliver Adams, Adam Makarucha, Graham Neubig, Steven Bird, and Trevor Cohn.
+  2017.
+\newblock \href {https://www.aclweb.org/anthology/E17-1088} {Cross-lingual word
+  embeddings for low-resource language modeling}.
+\newblock In \emph{Proceedings of the 15th Conference of the {E}uropean Chapter
+  of the Association for Computational Linguistics: Volume 1, Long Papers},
+  pages 937--947, Valencia, Spain. Association for Computational Linguistics.
+
+\bibitem[{Agirre et~al.(2009)Agirre, Alfonseca, Hall, Kravalova, Pasca, and
+  Soroa}]{agirre2009study}
+Eneko Agirre, Enrique Alfonseca, Keith Hall, Jana Kravalova, Marius Pasca, and
+  Aitor Soroa. 2009.
+\newblock A study on similarity and relatedness using distributional and
+  wordnet-based approaches.
 
 \bibitem[{Ai et~al.(2017)Ai, Lu, Liu, Wang, Huang, and Mei}]{ai2017untangling}
 Wei Ai, Xuan Lu, Xuanzhe Liu, Ning Wang, Gang Huang, and Qiaozhu Mei. 2017.
@@ -40,16 +57,38 @@ Francesco Barbieri, Miguel Ballesteros, and Horacio Saggion. 2017.
 \newblock Are emojis predictable?
 \newblock \emph{arXiv preprint arXiv:1702.07285}.
 
+\bibitem[{Bergstra and Bengio(2012)}]{bergstra2012random}
+James Bergstra and Yoshua Bengio. 2012.
+\newblock Random search for hyper-parameter optimization.
+\newblock \emph{The Journal of Machine Learning Research}, 13(1):281--305.
+
 \bibitem[{Bojanowski et~al.(2016)Bojanowski, Grave, Joulin, and
   Mikolov}]{bojanowski2016enriching}
 Piotr Bojanowski, Edouard Grave, Armand Joulin, and Tomas Mikolov. 2016.
 \newblock Enriching word vectors with subword information.
 \newblock \emph{arXiv preprint arXiv:1607.04606}.
 
+\bibitem[{Bruni et~al.(2012)Bruni, Boleda, Baroni, and
+  Tran}]{bruni2012distributional}
+Elia Bruni, Gemma Boleda, Marco Baroni, and Nam-Khanh Tran. 2012.
+\newblock Distributional semantics in technicolor.
+\newblock In \emph{Proceedings of the 50th Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, pages 136--145.
+
 \bibitem[{Buck et~al.(2014)Buck, Heafield, and Van~Ooyen}]{buck2014n}
 Christian Buck, Kenneth Heafield, and Bas Van~Ooyen. 2014.
 \newblock N-gram counts and language models from the common crawl.
 \newblock In \emph{LREC}, volume~2, page~4. Citeseer.
+
+\bibitem[{Camacho-Collados and
+  Navigli(2016)}]{camacho-collados-navigli-2016-find}
+Jos{\'e} Camacho-Collados and Roberto Navigli. 2016.
+\newblock \href {https://doi.org/10.18653/v1/W16-2508} {Find the word that does
+  not belong: A framework for an intrinsic evaluation of word vector
+  representations}.
+\newblock In \emph{Proceedings of the 1st Workshop on Evaluating Vector-Space
+  Representations for {NLP}}, pages 43--50, Berlin, Germany. Association for
+  Computational Linguistics.
 
 \bibitem[{Chen et~al.(2017)Chen, Tsutsui, Ding, and Ma}]{chen2017understanding}
 Baitong Chen, Satoshi Tsutsui, Ying Ding, and Feicheng Ma. 2017.
@@ -79,6 +118,14 @@ Bjarke Felbo, Alan Mislove, Anders S{\o}gaard, Iyad Rahwan, and Sune Lehmann.
 \newblock Using millions of emoji occurrences to learn any-domain
   representations for detecting sentiment, emotion and sarcasm.
 \newblock \emph{arXiv preprint arXiv:1708.00524}.
+
+\bibitem[{Finkelstein et~al.(2001)Finkelstein, Gabrilovich, Matias, Rivlin,
+  Solan, Wolfman, and Ruppin}]{finkelstein2001placing}
+Lev Finkelstein, Evgeniy Gabrilovich, Yossi Matias, Ehud Rivlin, Zach Solan,
+  Gadi Wolfman, and Eytan Ruppin. 2001.
+\newblock Placing search in context: The concept revisited.
+\newblock In \emph{Proceedings of the 10th international conference on World
+  Wide Web}, pages 406--414.
 
 \bibitem[{Gonen et~al.(2020)Gonen, Jawahar, Seddah, and
   Goldberg}]{gonen2020simple}
@@ -129,6 +176,21 @@ William~L Hamilton, Jure Leskovec, and Dan Jurafsky. 2016{\natexlab{b}}.
   change.
 \newblock \emph{arXiv preprint arXiv:1605.09096}.
 
+\bibitem[{Jiang et~al.(2018)Jiang, Yu, Hsieh, and
+  Chang}]{jiang2018learningword}
+Chao Jiang, Hsiang-Fu Yu, Cho-Jui Hsieh, and Kai-Wei Chang. 2018.
+\newblock Learningword embeddings for low-resource languages by pu learning.
+\newblock \emph{arXiv preprint arXiv:1805.03366}.
+
+\bibitem[{Jungmaier et~al.(2020)Jungmaier, Kassner, and
+  Roth}]{jungmaier-etal-2020-dirichlet}
+Jakob Jungmaier, Nora Kassner, and Benjamin Roth. 2020.
+\newblock \href {https://www.aclweb.org/anthology/2020.lrec-1.437}
+  {{D}irichlet-smoothed word embeddings for low-resource settings}.
+\newblock In \emph{Proceedings of The 12th Language Resources and Evaluation
+  Conference}, pages 3560--3565, Marseille, France. European Language Resources
+  Association.
+
 \bibitem[{Kozlowski et~al.(2019)Kozlowski, Taddy, and
   Evans}]{kozlowski2019geometry}
 Austin~C Kozlowski, Matt Taddy, and James~A Evans. 2019.
@@ -155,20 +217,20 @@ Shangsong Liang, Xiangliang Zhang, Zhaochun Ren, and Evangelos Kanoulas. 2018.
 \newblock In \emph{Proceedings of the 24th ACM SIGKDD International Conference
   on Knowledge Discovery \& Data Mining}, pages 1764--1773.
 
+\bibitem[{Michel et~al.(2020)Michel, Hangya, and
+  Fraser}]{michel-etal-2020-exploring}
+Leah Michel, Viktor Hangya, and Alexander Fraser. 2020.
+\newblock \href {https://www.aclweb.org/anthology/2020.lrec-1.313} {Exploring
+  bilingual word embeddings for {H}iligaynon, a low-resource language}.
+\newblock In \emph{Proceedings of The 12th Language Resources and Evaluation
+  Conference}, pages 2573--2580, Marseille, France. European Language Resources
+  Association.
+
 \bibitem[{Mikolov et~al.(2013)Mikolov, Chen, Corrado, and
   Dean}]{mikolov2013efficient}
 Tomas Mikolov, Kai Chen, Greg Corrado, and Jeffrey Dean. 2013.
 \newblock Efficient estimation of word representations in vector space.
 \newblock \emph{arXiv preprint arXiv:1301.3781}.
-
-\bibitem[{Mnih and Kavukcuoglu(2013)}]{NIPS2013_5165}
-Andriy Mnih and Koray Kavukcuoglu. 2013.
-\newblock \href
-  {http://papers.nips.cc/paper/5165-learning-word-embeddings-efficiently-with-noise-contrastive-estimation.pdf}
-  {Learning word embeddings efficiently with noise-contrastive estimation}.
-\newblock In C.~J.~C. Burges, L.~Bottou, M.~Welling, Z.~Ghahramani, and K.~Q.
-  Weinberger, editors, \emph{Advances in Neural Information Processing Systems
-  26}, pages 2265--2273. Curran Associates, Inc.
 
 \bibitem[{Pennington et~al.(2014)Pennington, Socher, and
   Manning}]{pennington2014glove}
@@ -176,6 +238,15 @@ Jeffrey Pennington, Richard Socher, and Christopher~D Manning. 2014.
 \newblock Glove: Global vectors for word representation.
 \newblock In \emph{Proceedings of the 2014 conference on empirical methods in
   natural language processing (EMNLP)}, pages 1532--1543.
+
+\bibitem[{Radinsky et~al.(2011)Radinsky, Agichtein, Gabrilovich, and
+  Markovitch}]{radinsky2011word}
+Kira Radinsky, Eugene Agichtein, Evgeniy Gabrilovich, and Shaul Markovitch.
+  2011.
+\newblock A word at a time: computing word relatedness using temporal semantic
+  analysis.
+\newblock In \emph{Proceedings of the 20th international conference on World
+  wide web}, pages 337--346.
 
 \bibitem[{{\v R}eh{\r u}{\v r}ek and Sojka(2010)}]{rehurek_lrec}
 Radim {\v R}eh{\r u}{\v r}ek and Petr Sojka. 2010.
@@ -196,6 +267,12 @@ Xuri Tang. 2018.
 \newblock A state-of-the-art of semantic change computation.
 \newblock \emph{arXiv preprint arXiv:1801.09872}.
 
+\bibitem[{Wang et~al.(2019)Wang, Wang, Chen, Wang, and
+  Kuo}]{wang2019evaluating}
+Bin Wang, Angela Wang, Fenxiao Chen, Yuncheng Wang, and C-C~Jay Kuo. 2019.
+\newblock Evaluating word embedding models: Methods and experimental results.
+\newblock \emph{APSIPA transactions on signal and information processing}, 8.
+
 \bibitem[{Wijeratne et~al.(2017)Wijeratne, Balasuriya, Sheth, and
   Doran}]{wijeratne2017semantics}
 Sanjaya Wijeratne, Lakshika Balasuriya, Amit Sheth, and Derek Doran. 2017.
@@ -208,5 +285,9 @@ Zi~Yin and Yuanyuan Shen. 2018.
 \newblock On the dimensionality of word embedding.
 \newblock In \emph{Advances in Neural Information Processing Systems}, pages
   887--898.
+
+\bibitem[{Zesch et~al.(2008)Zesch, M{\"u}ller, and Gurevych}]{zesch2008using}
+Torsten Zesch, Christof M{\"u}ller, and Iryna Gurevych. 2008.
+\newblock Using wiktionary for computing semantic relatedness.
 
 \end{thebibliography}
