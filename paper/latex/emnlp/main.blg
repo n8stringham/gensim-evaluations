@@ -1,54 +1,51 @@
-This is BibTeX, Version 0.99d (TeX Live 2020)
-Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+This is BibTeX, Version 0.99d (TeX Live 2016/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: main.aux
 The style file: acl_natbib.bst
 Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
-Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: emnlp2020.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-Warning--empty journal in agirre2009study
-Warning--empty booktitle in zesch2008using
-You've used 41 entries,
+You've used 30 entries,
             3571 wiz_defined-function locations,
-            917 strings with 14703 characters,
-and the built_in function-call counts, 32106 in all, are:
-= -- 2811
-> -- 1565
-< -- 34
-+ -- 502
-- -- 450
-* -- 2075
-:= -- 4643
-add.period$ -- 171
-call.type$ -- 41
-change.case$ -- 402
-chr.to.int$ -- 42
-cite$ -- 43
-duplicate$ -- 2207
-empty$ -- 2282
-format.name$ -- 575
-if$ -- 7105
+            862 strings with 12227 characters,
+and the built_in function-call counts, 22847 in all, are:
+= -- 2016
+> -- 1083
+< -- 25
++ -- 346
+- -- 309
+* -- 1457
+:= -- 3335
+add.period$ -- 128
+call.type$ -- 30
+change.case$ -- 284
+chr.to.int$ -- 31
+cite$ -- 30
+duplicate$ -- 1568
+empty$ -- 1640
+format.name$ -- 395
+if$ -- 5063
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 437
-newline$ -- 208
-num.names$ -- 164
-pop$ -- 1034
+missing$ -- 307
+newline$ -- 155
+num.names$ -- 120
+pop$ -- 710
 preamble$ -- 1
-purify$ -- 314
+purify$ -- 223
 quote$ -- 0
-skip$ -- 1555
+skip$ -- 1130
 stack$ -- 0
-substring$ -- 1212
-swap$ -- 1107
-text.length$ -- 25
+substring$ -- 855
+swap$ -- 782
+text.length$ -- 17
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 369
-warning$ -- 2
-while$ -- 191
+type$ -- 270
+warning$ -- 0
+while$ -- 137
 width$ -- 0
-write$ -- 536
-(There were 2 warnings)
+write$ -- 397
