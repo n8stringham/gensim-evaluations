@@ -30,6 +30,9 @@
 \usepackage{mathtools}
 \usepackage{multirow}
 \usepackage{siunitx}
+\sisetup{group-minimum-digits=4}
+\usepackage[utf8]{inputenc}
+
 %\aclfinalcopy % Uncomment this line for the final submission
 %\def\aclpaperid{***} %  Enter the acl Paper ID here
 
@@ -39,10 +42,10 @@
 % smaller than 5cm (the original size); we will check this
 % in the camera-ready version and ask you to change it back.
 
-\usepackage{etoolbox}
-\makeatletter
-\patchcmd\@combinedblfloats{\box\@outputbox}{\unvbox\@outputbox}{}{\errmessage{\noexpand patch failed}}
-\makeatother
+%\usepackage{etoolbox}
+%\makeatletter
+%\patchcmd\@combinedblfloats{\box\@outputbox}{\unvbox\@outputbox}{}{\errmessage{\noexpand patch failed}}
+%\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % latex functions
@@ -60,13 +63,14 @@
 
 \newcommand{\fixme}[1]{{\color{red}\itshape \textbf{FIXME:} {#1}}}
 
+%\definecolor{Gray}{gray}{0.9}
+
 % what were these here for?
 %\newcommand\BibTeX{B\textsc{ib}\TeX}
 %\special{papersize=210mm,297mm}
 
 % Paper
 \title{Instructions for EMNLP 2020 Proceedings}
-
 \author{Nathan Stringham\\
   Affiliation / Address line 1 \\
   Affiliation / Address line 2 \\
@@ -190,12 +194,12 @@ Our contributions can be summarized with the following three points.
     }
     \item 
     We introduce a method for automatically generating test datasets for the $\OddOneOut$ and $\topk$ tasks in the 581 languages supported by the wikidata project.%
-        \footnote{For the full list of languages supported, see \url{https://www.wikidata.org/wiki/Help:Wikimedia_language_codes/lists/all} \fixme{You wrote 461 without a citation.  Which is correct?}}
+        \footnote{For the full list of languages supported, see \url{https://www.wikidata.org/wiki/Help:Wikimedia_language_codes/lists/all}}
     All previous evaluation methods work on only a small number of languages (typically just English),
     and require significant manual work to adapt to new languages.
 	\item 
     We perform the largest existing multilingual evaluation on low-resource languages.
-    Specifically, we provide word embeddings for the 18 languages of the Classical Languages ToolKit (CLTK) library \fixme{bibtex format is wrong \citep{johnson2014}}.
+    Specifically, we provide word embeddings for the 18 languages of the Classical Languages ToolKit (CLTK) library \citep{johnson2014}.
     We further introduce a new downstream task called the Language Comparison Task (LCT) that lets us map which topics are included in these classical language corpora.
 \end{enumerate}
 
@@ -204,7 +208,7 @@ Our contributions can be summarized with the following three points.
 \includegraphics[width=1\columnwidth]{size_vs_acc.pdf} 
 \caption{The plot above compares the regions of effectiveness for our evaluation metrics. 
 The analogy task fails to measure change in accuracy of the embeddings until the number of unique words in the training dataset reaches  $2^{16}$, much later than both $\OddOneOut$ and $\topk$. 
-Though $\OddOneOut$ seems the clear victor of these methods, experimentation in \ref{sec:experiments} shows that $\topk$ works better in some circumstances.}
+Though $\OddOneOut$ seems the clear victor of these methods, experimentation in \ref{sec:mca} shows that $\topk$ works better in some circumstances.}
 \label{fig:size_vs_acc}
 \end{figure}
 
@@ -223,7 +227,7 @@ The $\OddOneOut$ and $\topk$ tasks are simple and generally applicable.
 Both tasks require a test set in the same easy to generate format.
 The test set consists of a list of categories,
 and each category contains a list of words that belong to that category.
-For example, the category \texttt{fruit} might contain the words \texttt{banana}, \texttt{apple}, and \texttt{orange}. \fixme{use a real example.}
+For example, the category \texttt{ancient cities} might contain the words \texttt{carthage}, \texttt{sparta}, and \texttt{persepolis}. \fixme{use a real example.}
 The $\OddOneOut$ task measures a model's ability to identify words that are unrelated to the category,
 and the $\topk$ task measures a model's ability to identify words that are related to the category.
 
@@ -334,7 +338,7 @@ Then we rewrite Equation \ref{eq:OOOki} as
 \end{equation}
 With this definition, the runtime of $\OddOneOut(k)$ is $O(dkmpv)$,
 which is linear in all the parameters of interest.
-\fixme{In our experiments, we found $p=1000$ to give sufficiently accurate results without taking too much computation.}
+In our experiments, we found $p=1000$ to give sufficiently accurate results without taking too much computation.
 
 \section{Experiments}
 \label{sec:experiments}
@@ -406,9 +410,11 @@ The results are shown in Figure \ref{fig:size_vs_acc}.
 The $\OddOneOut$ and $\topk$ metrics show higher results
 }
 
-\begin{figure*}
+\begin{figure}
 \centering
-    \resizebox{6in}{3in}{\includegraphics{cross_cat_acc.pdf} }
+%    \resizebox{6in}{3in}{\includegraphics{cross_cat_acc.pdf} }
+    \resizebox{\columnwidth}{5in}{\includegraphics{cross_cat_acc-horizontal.pdf} }
+
 \caption{
     The methods perform better on some categories than others. $\topk$  seems to excel in categories that are more homogenous like 'family female',
  while analogies seem to work best with geographical relationships.
@@ -416,8 +422,8 @@ The $\OddOneOut$ and $\topk$ metrics show higher results
   As a result the analogy score for a given relationship is shown twice;
    one bar in each of the categories that make up the pair.
    }
-\label{fig:data_vs_methods}
-\end{figure*}
+\label{fig:cross_cat_acc}
+\end{figure}
 
 
 \subsection{Emoji Experiments}
@@ -441,7 +447,7 @@ First, emoji embeddings are inherently low-resource---%
 only 3000 unique emojis exist in the Unicode standard---%
 and thus evaluation techniques specifically designed for the low-resource setting will be more effective.
 Second, the semantics of most emojis do not allow them to be used in any analogy task.
-In particular, the original emoji2vec paper \cite{eisner2016emoji2vec} identifies only \fixme{5?} possible emoji analogies.
+In particular, the original emoji2vec paper \cite{eisner2016emoji2vec} identifies only 6 possible emoji analogies.
 
 In order to tune their emoji embeddings, \citet{eisner2016emoji2vec} therefore do not use the analogy task,
 and instead introduce an ad-hoc ``emoji-description classification'' metric that required the creation of a test set with manually labeled emotion-description pairs.
@@ -508,42 +514,53 @@ and require more arbitrary decisions this approach is still very valuable.
 \fixme{Does the library allow the easy construction of these categories?}
 
 \subsection{Model Selection}
-
 % Improved Table - Combined Score
 \begin{table*}[t]
 \centering
-%\scalebox{.54}{
-\tiny
-\begin{tabular}{l|llrr|llrrrrl|rrr}
+\scriptsize
+\begin{tabular}{lrrllrrrrlrrr}
 \toprule
-\multicolumn{5}{c}{\bf Corpus} & \multicolumn{7}{c}{\bf Parameters} & \multicolumn{3}{c}{\bf Scores} \\
+\multicolumn{3}{c}{\bf Corpus} & \multicolumn{7}{c}{\bf Hyperparameters} & \multicolumn{3}{c}{\bf Scores} \\
 \midrule
-& Language & Test Set & Tokens & Unique Tokens & Model & Type & Dim & Window & LR & Min Count & Lemma & $\OddOneOut$ & $\topk$ & \texttt{Combined} \\
-\midrule
-    
-    \multirow{2}{*}{Hellenic}& greek & ancient greek & \num{37868209} & \num{1877574} & w2v & cbow & 40 & 9 & -1 & 4 & False & 1140 & 8 & 17.86\\
-    & greek & modern greek & \num{37868209} & \num{1877574} & fast & sg & 90 & 7 & -1 & 5 & True & 300 & 9 & 19.36\\  
+ \multicolumn{1}{l}{Language} & \multicolumn{1}{r}{Tokens} & \multicolumn{1}{r}{Unique} & \multicolumn{1}{l}{Model} & \multicolumn{1}{l}{Type} & \multicolumn{1}{r}{Dim} & \multicolumn{1}{r}{WS} & \multicolumn{1}{r}{LR} & \multicolumn{1}{r}{MC} & \multicolumn{1}{c}{Lem} & \multicolumn{1}{c}{\tiny$\OddOneOut$} & \multicolumn{1}{c}{$\topk$} & \multicolumn{1}{c}{\texttt{ Avg}} \\
     \midrule
-    \multirow{2}{*}{Italic}&latin & latin & \num{17777429} & \num{470790} & w2v & cbow & 50 & 10 & -1 & 7 & False & 2748 & 48 & 96.28\\ 
-    &old french  & french & \num{68741} & \num{8343} &  fast & sg & 250 & 6 & -1 & 8  & False & 1 & 7 & 3.20\\
-    \midrule
-    \multirow{5}{*}{Germanic}&middle english & english (old) & \num{7048144} & \num{314527} & fast & sg & 90 & 5 & -1 & 7 & False & 239 & 7 & 15.48 \\
-    &middle high german & german & \num{2090954} & \num{60674} & fast & cbow & 15 & 6 & -1 & 3 & False & 9 & 19 & 13.33 \\
-    &old english  & english (old) & \num{104011} & \num{33018} & fast & cbow & 425 & 3 & -1 & 3 & True & 0 & 1  & 1.33 \\
-    &old norse & icelandic & \num{458377} & \num{59186} & w2v & cbow & 60 & 10 & -1 & 3 & False & 968 & 2 & 5.98 \\
-    &old swedish & swedish & \num{1297740} & \num{116374} &  fast & sg & 50 & 8 & -1 & 5 & False & 50 & 1 & 3.85 \\
-    \midrule
-    \multirow{8}{*}{Indo-Aryan}&bengali & bengali & \num{5539} & \num{2323} & fast & cbow & 15 & 3 & -1 & 4 & False & 0 & 2 & 1.50 \\
-    &gujarati & gujarati & \num{1813} & \num{1140} & fast & sg & 80 & 3 & -1 & 5 & False & 0 & 7 & 1.78 \\
-    &hindi & hindi& \num{587655} & \num{55483} & fast & cbow & 45 & 4 & -1 & 8 & False & 263 & 2 & 5.93\\
-    &malayalam & malayalam& \num{9235} & \num{5405} & - & - & - & - & - & - & - & - & - & - \\
-    &marathi & marathi & \num{797926} & \num{96778} & w2v & sg & 400 & 4 & -1 & 6 & False & 342 & 1 & 3.98 \\
-    &punjabi & punjabi & \num{1024075} & \num{31343} & fast & sg & 50 & 8 & -1 & 5 & False & 0 & 1 & 1.3 \\
-    &sanskrit & sanskrit & \num{4042204} & \num{896480} & w2v & sg & 35 & 9 & -1 & 10 & False & 1530 & 1 & 3.99\\
-    &telugu & telugu & \num{537673} & \num{276330} &  w2v & cbow & 60 & 10 & -1 & 3 & False & 50 & 0 & 1.96 \\
-    \midrule
-    \multirow{2}{*}{Semitic}&classical arabic & arabic& \num{81306} & \num{20493} & - & - & - & - & - & - & - & - & - & - \\
-    &hebrew & hebrew & \num{41378460} & \num{893512} & fast & sg & 30 & 4 & -1 & 3 & False & 1098 & 6 & 13.91 \\  
+    \multicolumn{13}{l}{Hellenic}\\
+%\midrule
+ \quad Anc. Greek & \num{37868209} & \num{1877574} & w2v & cbow &  \num{40} &  \num{9} &  \num{.1} &  \num{4} & False & \num{0.1900} & \num{0.0178} & \num{0.0327}\\
+%    & greek & modern greek & \num{37868209} & \num{1877574} & fast & sg & 90 & 7 & -1 & 5 & True & 300 & 9 & 19.36\\  
+%    \midrule
+\multicolumn{13}{l}{}\\[-4pt]
+    \multicolumn{13}{l}{Italic}\\
+%    \midrule
+ \quad Latin & \num{17777429} & \num{470790} & w2v & cbow &  \num{50} &  \num{10} &  \num{.1} &  \num{7} & False &  \num{0.1527} &  \num{0.0645} &  \num{0.0908}\\ 
+   \quad Old French  & \num{68741} & \num{8343} &  fast & sg & \num{250} & \num{6} & \num{.1} & \num{8}  & False & \num{0.0001} & \num{0.0109} & \num{0.0003}\\
+%    \midrule
+    \multicolumn{13}{l}{}\\[-4pt]
+\multicolumn{13}{l}{Germanic}\\
+%    \midrule
+\quad Mid. English & \num{7048144} & \num{314527} & fast & sg & \num{90} & \num{5} & \num{.1} & \num{7} & False & \num{0.0239} & \num{0.0012} & \num{0.0024} \\
+   \quad Mid. High German & \num{2090954} & \num{60674} & fast & cbow & \num{15} & \num{6} & \num{.1} & \num{3} & False & \num{0.0005} & \num{0.0029} & \num{0.0010} \\
+   \quad Old English  & \num{104011} & \num{33018} & fast & cbow & \num{425} & \num{3} & \num{.1} & \num{3} & True & \num{0.0000} & \num{0.0005}  & \num{0.0002} \\
+   \quad Old Norse & \num{458377} & \num{59186} & w2v & cbow & \num{60} & \num{10} & \num{.1} & \num{3} & False & \num{0.0569} & \num{0.0093} & \num{0.0161} \\
+   \quad Old Swedish & \num{1297740} & \num{116374} &  fast & sg & \num{50} & \num{8} & \num{.1} & \num{5} & False & \num{0.0031} & \num{0.0001} & \num{0.0004} \\
+%    \midrule
+    \multicolumn{13}{l}{}\\[-4pt]
+    \multicolumn{13}{l}{Indic}\\
+%    \midrule
+\quad Bengali & \num{5539} & \num{2323} & fast & cbow & \num{15} & \num{3} & \num{.1} & \num{4} & False & \num{0.0000} & \num{0.0065} & \num{0.0002} \\
+   \quad Gujarati & \num{1813} & \num{1140} & fast & sg & \num{80} & \num{3} & \num{.1} & \num{5} & False & \num{0.0000} & \num{0.0292} & \num{0.0002} \\
+   \quad Hindi & \num{587655} & \num{55483} & fast & cbow & \num{45} & \num{4} & \num{.1} & \num{8} & False & \num{0.0175} & \num{0.0038} & \num{0.0064}\\
+   \quad Malayalam & \num{9235} & \num{5405} & - & - & - & - & - & - & - & - & - & - \\
+    \quad Marathi  & \num{797926} & \num{96778} & w2v & sg & \num{400} & \num{4} & \num{.1} & \num{6} & False & \num{0.0214} & \num{0.0065} & \num{0.0101} \\
+    \quad Punjabi & \num{1024075} & \num{31343} & fast & sg & \num{50} & \num{8} & \num{.1} & \num{5} & False & \num{0.0000} & \num{0.0001} & \num{0.0001} \\
+    \quad Sanskrit & \num{4042204} & \num{896480} & w2v & sg & \num{35} & \num{9} & \num{.1} & \num{10} & False & \num{0.1391} & \num{0.0093} & \num{0.0175}\\
+    \quad Telugu & \num{537673} & \num{276330} &  w2v & cbow & \num{60} & \num{10} & \num{.1} & \num{3} & False & \num{0.0042} & \num{0.0000} & \num{0.0002} \\
+%    \midrule
+    \multicolumn{13}{l}{}\\[-4pt]
+    \multicolumn{13}{l}{Semitic}\\    
+%    \midrule
+  \quad Classical Arabic & \num{81306} & \num{20493} & - & - & - & - & - & - & - & - & - & - \\
+   \quad Hebrew & \num{41378460} & \num{893512} & fast & sg & \num{30} & \num{4} & \num{.1} & \num{3} & False & \num{0.0646} & \num{0.0056} & \num{0.0104} \\ 
 \bottomrule
 \end{tabular}
 %}
@@ -557,6 +574,70 @@ Using $\OddOneOut$ and $\topk$ allows us to tune models trained on corpora with 
 \label{table:language}
 \end{table*}
 
+
+%% Improved Table - raw scores
+%\begin{table*}[t]
+%\centering
+%%\scalebox{.54}{
+%\scriptsize
+%\begin{tabular}{lrr|llrrrrl|rrr}
+%\toprule
+%\multicolumn{3}{c|}{\bf Corpus} & \multicolumn{7}{|c|}{\bf Parameters} & \multicolumn{3}{|c}{\bf Scores} \\
+%\midrule
+% \multicolumn{1}{l|}{Language} & \multicolumn{1}{|r|}{Tokens} & \multicolumn{1}{|r|}{Unique} & \multicolumn{1}{|l|}{Model} & \multicolumn{1}{|l|}{Type} & \multicolumn{1}{|r|}{Dim} & \multicolumn{1}{|r|}{Window} & \multicolumn{1}{|r|}{LR} & \multicolumn{1}{|r|}{Min} & \multicolumn{1}{|c|}{Lemma} & \multicolumn{1}{|c|}{$\OddOneOut$} & \multicolumn{1}{|c|}{$\topk$} & \multicolumn{1}{|c}{\texttt{Combined}} \\
+%    \midrule
+%%    \rowcolor{Gray}
+%    \multicolumn{13}{c}{Hellenic Family}\\
+%\midrule
+% ancient greek & \num{37868209} & \num{1877574} & w2v & cbow &  \num{40} &  \num{9} &  \num{-1} &  \num{4} & False & \num{1140} & \num{8} & \num{17.86}\\
+%%    & greek & modern greek & \num{37868209} & \num{1877574} & fast & sg & 90 & 7 & -1 & 5 & True & 300 & 9 & 19.36\\  
+%    \midrule
+%%    \rowcolor{Gray}
+%    \multicolumn{13}{c}{Italic Family}\\
+%    \midrule
+% latin & \num{17777429} & \num{470790} & w2v & cbow &  \num{50} &  \num{10} &  \num{-1} &  \num{7} & False &  \num{2748} &  \num{48} &  \num{96.28}\\ 
+%    old french  & \num{68741} & \num{8343} &  fast & sg & \num{250} & \num{6} & \num{-1} & \num{8}  & False & \num{1} & \num{7} & \num{3.20}\\
+%    \midrule
+%%    \rowcolor{Gray}
+%\multicolumn{13}{c}{Germanic Family}\\
+%    \midrule
+%mid. english & \num{7048144} & \num{314527} & fast & sg & \num{90} & \num{5} & \num{-1} & \num{7} & False & \num{239} & \num{7} & \num{15.48} \\
+%    mid. high& \num{2090954} & \num{60674} & fast & cbow & \num{15} & \num{6} & \num{-1} & \num{3} & False & \num{9} & \num{19} & \num{13.33} \\
+%    old english  & \num{104011} & \num{33018} & fast & cbow & \num{425} & \num{3} & \num{-1} & \num{3} & True & \num{0} & \num{1}  & \num{1.33} \\
+%    old norse & \num{458377} & \num{59186} & w2v & cbow & \num{60} & \num{10} & \num{-1} & \num{3} & False & \num{968} & \num{2} & \num{5.98} \\
+%    old swedish & \num{1297740} & \num{116374} &  fast & sg & \num{50} & \num{8} & \num{-1} & \num{5} & False & \num{50} & \num{1} & \num{3.85} \\
+%    \midrule
+%%    \rowcolor{Gray}
+%    \multicolumn{13}{c}{Indic Family}\\
+%    \midrule
+%bengali & \num{5539} & \num{2323} & fast & cbow & \num{15} & \num{3} & \num{-1} & \num{4} & False & \num{0} & \num{2} & \num{1.50} \\
+%    gujarati & \num{1813} & \num{1140} & fast & sg & \num{80} & \num{3} & \num{-1} & \num{5} & False & \num{0} & \num{7} & \num{1.78} \\
+%    hindi & \num{587655} & \num{55483} & fast & cbow & \num{45} & \num{4} & \num{-1} & \num{8} & False & \num{263} & \num{2} & \num{5.93}\\
+%    malayalam & \num{9235} & \num{5405} & - & - & - & - & - & - & - & - & - & - \\
+%    marathi  & \num{797926} & \num{96778} & w2v & sg & \num{400} & \num{4} & \num{-1} & \num{6} & False & \num{342} & \num{1} & \num{3.98} \\
+%    punjabi & \num{1024075} & \num{31343} & fast & sg & \num{50} & \num{8} & \num{-1} & \num{5} & False & \num{0} & \num{1} & \num{1.3} \\
+%    sanskrit & \num{4042204} & \num{896480} & w2v & sg & \num{35} & \num{9} & \num{-1} & \num{10} & False & \num{1530} & \num{1} & \num{3.99}\\
+%    telugu & \num{537673} & \num{276330} &  w2v & cbow & \num{60} & \num{10} & \num{-1} & \num{3} & False & \num{50} & \num{0} & \num{1.96} \\
+%    \midrule
+%%    \rowcolor{Gray}
+%    \multicolumn{13}{c}{Semitic Family}\\    
+%    \midrule
+%arabic & \num{81306} & \num{20493} & - & - & - & - & - & - & - & - & - & - \\
+%    hebrew & \num{41378460} & \num{893512} & fast & sg & \num{30} & \num{4} & \num{-1} & \num{3} & False & \num{1098} & \num{6} & \num{13.91} \\ 
+%\bottomrule
+%\end{tabular}
+%%}
+%\caption{The table above provides details for the best model trained for languages supported by CLTK.
+%Following a tuning process, models were chosen by their $\texttt{Combined Score}$
+%which is calculated as the harmonic mean of $\topk$ and $\OddOneOut$.
+%It is important to note that the absolute score for our evaluation metrics are not important in and of themselves,
+%rather they are important as indicators of a change in embedding quality that the analogy task would fail to show.
+%To emphasize this, we have reported the raw number of correct answers for each metric.
+%Using $\OddOneOut$ and $\topk$ allows us to tune models trained on corpora with unique token counts in the thousands instead of the millions.}
+%\label{table:language}
+%\end{table*}
+
+
 There are 7 hyperparameters for our language models,
 and we use the random search method \citep{bergstra2012random} to tune these hyperparameters.
 Random search is simple to implement, computationally efficient, easy to parallelize, and avoids the curse of dimensionality inherent to grid search and Bayesian optimization methods.
@@ -564,8 +645,28 @@ Random search is simple to implement, computationally efficient, easy to paralle
 Table \ref{table:hyperparam} defines the hyperparameters and the range of values sampled for each.
 Should this be a table or included directly in the text?
 \begin{table}
-    \includegraphics[width=\columnwidth]{example-image-a}
-    \caption{Hyperparameters.}
+%    \includegraphics[width=\columnwidth]{example-image-a}
+   \begin{tabular}{lp{4cm}}
+    Hyperparameter &  Range \\
+   \toprule
+   Model & Word2vec or fastText \\ [4pt]
+%   \midrule
+   Type & Skipgram or Continuous Bag of Words \\ [4pt]
+%   \midrule
+   Dimension & $5$, $10$, $15$, $20$, $25$, $30$, $35$, $40$, $45$, $50$,
+                          $60$, $70$, $80$, $90$, $100$,
+                          $125$, $150$, $175$, $200$, $225$, $250$, $275$, $300$, $325$, $350$, $375$, $400$, $425$, $450$, $475$, $500$ \\[4pt]
+%      \midrule
+   Window Size & $3$, $4$, $5$, $6$, $7$, $8$, $9$, $10$, $11$ \\ [4pt]
+%      \midrule
+   Learning Rate & $10^{-3}$, $10^{-2}$, $10^{-1}$ \\ [4pt]
+%      \midrule
+   Min Count & $3$, $4$, $5$, $6$, $7$, $8$, $9$, $10$, $11$ \\ [4pt]
+%      \midrule
+   Lemmatization & True or False \\ [2pt]
+   \bottomrule
+   \end{tabular}
+    \caption{In a low-resource setting, some model hyperparameters take on new level of importance. The effect of Min Count, which thresholds the number of times a word must appear in the corpus to be added to the vocabulary, is amplified when data is scarce. In some cases, lemmatization can be an effective way to combat data sparsity. Likewise, the ability to model n-grams with a fastText model could boost performance by overcoming the obstacle of out of vocabulary words which plagues many small models.}
     \label{table:hyperparam}
 \end{table}
 }
@@ -577,7 +678,7 @@ Then train each language on this same set of hyperparameters.
 The best results are reported in Table \ref{table:language}.
 The optimal set of hyperparameters is different for each language,
 which underscores the importance of proper model tuning in the low-resource regime.
-Whereas all previous highly multilingual work used the same set of hyperparemeters for all models,
+Whereas all previous highly multilingual work used the same set of hyperparameters for all models,
 we show that this is not an optimal strategy.
 
 \subsection{Language Comparison Task}
@@ -585,9 +686,9 @@ we show that this is not an optimal strategy.
 We now introduce a novel downstream task for word embeddings called the \emph{Language Comparison Task} (LCT).
 The goal of this task is to better visualize the topics written about in our 18 language corpora.
 We choose three religious topics: Biblical Figures, Facets of Buddhism, and Facets of Hinduism.
-Each of these topics has an entry in Wikidata,
-\fixme{I'm not sure what the correct wikidata terminology is here.}
-and so it is easy to create categories based on these topics in each language.
+Each of these topics is property in Wikidata, 
+meaning that we can query the database for items linked to these topics
+and easily create categories based on them for each language.
 Figure \ref{fig:downstream} provides a list of words associated with each topic.
 
 For each language and topic, we compute the $\topk$ and $\OddOneOut$ metrics and plot the results in Figure \ref{fig:downstream}.
@@ -612,12 +713,54 @@ and compute the harmonic mean to choose the most accurate model.
     Can we explain why our method is better than this simpler method?
 }
 
+
+%\begin{cjhebrew}
+%br+syt br' 'lhym 't h+smym w't h'r.s;
+%\end{cjhebrew}
+
+% Test Set Table
+%\begin{table}[]
+%\centering
+%\begin{tabular}{lllllllll}
+%\toprule
+%\multicolumn{3}{l}{Biblical Figures} & \multicolumn{3}{l}{Facets of Buddhism} & \multicolumn{3}{l}{Facets of Hinduism} \\
+% Abraham & אברהם & ઇબ્રાહિમ & Buddha  & בודהה & બુદ્ધત્વ & Mahātmā & - & મહાત્મા \\
+% Hilkiah &  חלקיה & - & Vipassanā & ויפאסנה & વિપ્શના & Rishi & - & ઋષિ\\
+% Matthew the Apostle & מתי & - & Bhagavan & - & ભગવાન & Hindu prayer beads & - & જપમાળા \\
+% Zerubbabel & זרובבל בן שאלתיאל  & - & meditation & מדיטציה & - & Ashvamedha & - & અશ્વમેધ યજ્ઞ\\
+% Joseph & יוסף הקדוש  & જોસેફ & nirvana & נירוואנה &  નિર્વાણ & Brahmin & - & બ્રાહ્મણ\\
+%\end{tabular}
+%\end{table}
+
+% Old Figure 4
+%\begin{figure*}
+%\centering
+%%\resizebox{6in}{2.75in}{\includegraphics{lct-raw.pdf}}
+%\resizebox{6in}{2.75in}{\includegraphics{lct.pdf}}
+%
+%\caption{
+%    (\textbf{Top})
+%    High performance on the Biblical Figures category indicates some level of biblical influence via the corpus. 
+%    Interestingly, we see that greek embeddings optimized on the Modern Greek test set significantly outperformed the embeddings optimized for the Ancient Greek. 
+%    This matches our intuition that things of a biblical nature have had a greater influence on Modern Greek than Ancient Greek.
+%    (\textbf{Middle})
+%    Though many of the Indic language embeddings performed well on the Facets of Buddhism, 
+%    surprisingly so did our Latin and Hebrew embeddings. 
+%    This leads us to believe that some Buddhist concepts and words are shared by corpora spanning languages as diverse as Hebrew, Latin, and Hindi. 
+%    At the same time, it should also be noted that Latin and Hebrew were two of the largest models trained compared to other classical languages and thus also likely benefit from greater resource richness.
+%    (\textbf{Bottom})
+%    Similar to Figure \ref{fig:biblical} we see languages more closely related to the topic of the category achieving better performance, in this case primarily the Indic languages. 
+%    Interstingly, our Bengali embeddings performed poorly on this category suggesting that the corpus did not refer heavily to the Hindu context.
+%}
+%\label{fig:downstream}
+%\end{figure*}
+
 \begin{figure*}
 \centering
-\resizebox{6in}{2in}{\includegraphics{biblical-raw.pdf}}
-\resizebox{6in}{2in}{\includegraphics{buddhism-raw.pdf}}
-\resizebox{6in}{2in}{\includegraphics{hinduism-raw.pdf}}
-
+\begin{tabular}{lccc}
+ \multicolumn{3}{l}{Language} &\multicolumn{1}{c}{\hspace{4em} Category} \\ 
+\multicolumn{4}{l}{\includegraphics{lct-biblical.pdf}} \\
+\end{tabular}
 \caption{
     (\textbf{Top})
     High performance on the Biblical Figures category indicates some level of biblical influence via the corpus. 
@@ -630,18 +773,11 @@ and compute the harmonic mean to choose the most accurate model.
     At the same time, it should also be noted that Latin and Hebrew were two of the largest models trained compared to other classical languages and thus also likely benefit from greater resource richness.
     (\textbf{Bottom})
     Similar to Figure \ref{fig:biblical} we see languages more closely related to the topic of the category achieving better performance, in this case primarily the Indic languages. 
-    Interstingly, our Bengali embeddings performed poorly on this category suggesting that the corpus did not refer heavily to the Hindu context.
+    Interestingly, our Bengali embeddings performed poorly on this category suggesting that the corpus did not refer heavily to the Hindu context.
 }
 \label{fig:downstream}
 \end{figure*}
 
-%animals
-%\begin{figure*}
-%\centering
-%\includegraphics{animals-raw.pdf} 
-%\caption{}
-%\label{fig:multilingual}
-%\end{figure*}
 
 \section{Discussion}
 \label{sec:discussion}
@@ -709,8 +845,6 @@ Bias-variance tradeoff in dimensionality of word embeddings \cite{yin2018dimensi
 
 %\section{Related Work}
 %\label{sec:related}
-
-
 
 %\subsection{Nate}
 %

@@ -24,12 +24,6 @@ Wei Ai, Xuan Lu, Xuanzhe Liu, Ning Wang, Gang Huang, and Qiaozhu Mei. 2017.
 \newblock In \emph{Eleventh International AAAI Conference on Web and Social
   Media}.
 
-\bibitem[{et~al.(2014--2019)}]{johnson2014}
-Kyle P.~Johnson et~al. 2014--2019.
-\newblock Cltk: The classical language toolkit.
-\newblock \url{https://github.com/cltk/cltk}.
-\newblock {DOI} 10.5281/zenodo.593336.
-
 \bibitem[{Al-Halah et~al.(2019)Al-Halah, Aitken, Shi, and
   Caballero}]{al2019smile}
 Ziad Al-Halah, Andrew Aitken, Wenzhe Shi, and Jose Caballero. 2019.
@@ -181,6 +175,11 @@ William~L Hamilton, Jure Leskovec, and Dan Jurafsky. 2016{\natexlab{b}}.
 Chao Jiang, Hsiang-Fu Yu, Cho-Jui Hsieh, and Kai-Wei Chang. 2018.
 \newblock Learningword embeddings for low-resource languages by pu learning.
 \newblock \emph{arXiv preprint arXiv:1805.03366}.
+
+\bibitem[{Johnson(2014)}]{johnson2014}
+Kyle~P. Johnson. 2014.
+\newblock {CLTK}: The {C}lassical {L}anguage {T}oolkit.
+\newblock \url{https://github.com/cltk/cltk}.
 
 \bibitem[{Jungmaier et~al.(2020)Jungmaier, Kassner, and
   Roth}]{jungmaier-etal-2020-dirichlet}

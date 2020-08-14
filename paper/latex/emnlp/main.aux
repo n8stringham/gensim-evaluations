@@ -34,7 +34,7 @@
 \citation{johnson2014}
 \newlabel{sec:contributions}{{1}{2}{Introduction}{section.1}{}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:size_vs_acc}{{1}{2}{The plot above compares the regions of effectiveness for our evaluation metrics. The analogy task fails to measure change in accuracy of the embeddings until the number of unique words in the training dataset reaches $2^{16}$, much later than both $\OddOneOut $ and $\topk $. Though $\OddOneOut $ seems the clear victor of these methods, experimentation in \ref {sec:experiments} shows that $\topk $ works better in some circumstances.\relax }{figure.caption.1}{}}
+\newlabel{fig:size_vs_acc}{{1}{2}{The plot above compares the regions of effectiveness for our evaluation metrics. The analogy task fails to measure change in accuracy of the embeddings until the number of unique words in the training dataset reaches $2^{16}$, much later than both $\OddOneOut $ and $\topk $. Though $\OddOneOut $ seems the clear victor of these methods, experimentation in \ref {sec:mca} shows that $\topk $ works better in some circumstances.\relax }{figure.caption.1}{}}
 \newlabel{sec:method}{{2}{2}{Evaluation Methods}{section.2}{}}
 \newlabel{eq:OOOki}{{6}{3}{The $\OddOneOut $ method}{equation.2.6}{}}
 \newlabel{eq:P}{{7}{3}{The $\OddOneOut $ method}{equation.2.7}{}}
@@ -46,11 +46,11 @@
 \citation{eisner2016emoji2vec}
 \citation{eisner2016emoji2vec}
 \citation{eisner2016emoji2vec}
+\newlabel{fig:cross_cat_acc}{{2}{4}{The methods perform better on some categories than others. $\topk $ seems to excel in categories that are more homogenous like 'family female', while analogies seem to work best with geographical relationships. Note that in adapting the Google analogy set to work with our methods required splitting each relationship pair into two separate categories. As a result the analogy score for a given relationship is shown twice; one bar in each of the categories that make up the pair. \relax }{figure.caption.2}{}}
 \citation{eisner2016emoji2vec,felbo2017using,barbieri2017emojis,ai2017untangling,wijeratne2017semantics,al2019smile}
 \citation{eisner2016emoji2vec}
 \citation{eisner2016emoji2vec}
 \citation{johnson2014}
-\newlabel{fig:data_vs_methods}{{2}{5}{The methods perform better on some categories than others. $\topk $ seems to excel in categories that are more homogenous like 'family female', while analogies seem to work best with geographical relationships. Note that in adapting the Google analogy set to work with our methods required splitting each relationship pair into two separate categories. As a result the analogy score for a given relationship is shown twice; one bar in each of the categories that make up the pair. \relax }{figure.caption.2}{}}
 \newlabel{fig:emoji}{{3}{5}{This figures shows the tuning of emoji embeddings across different learning learning rates where the max accuracy for each metric is marked with a point. Both $\topk $ and $\OddOneOut $ follow the shape of \cite {eisner2016emoji2vec} area under the curve and accuracy metrics. Our methods lead us to select essentially the same hyperparameters as \cite {eisner2016emoji2vec} and reproduced results on the downstream task.\relax }{figure.caption.3}{}}
 \newlabel{sec:mca}{{4}{5}{Multilingual Content Analysis}{section.4}{}}
 \citation{bergstra2012random}
@@ -58,9 +58,9 @@
 \citation{gonen2020simple}
 \citation{camacho-collados-navigli-2016-find}
 \newlabel{table:language}{{1}{7}{The table above provides details for the best model trained for languages supported by CLTK. Following a tuning process, models were chosen by their $\texttt {Combined Score}$ which is calculated as the harmonic mean of $\topk $ and $\OddOneOut $. It is important to note that the absolute score for our evaluation metrics are not important in and of themselves, rather they are important as indicators of a change in embedding quality that the analogy task would fail to show. To emphasize this, we have reported the raw number of correct answers for each metric. Using $\OddOneOut $ and $\topk $ allows us to tune models trained on corpora with unique token counts in the thousands instead of the millions.\relax }{table.caption.4}{}}
-\newlabel{table:hyperparam}{{2}{7}{Hyperparameters.\relax }{table.caption.5}{}}
+\newlabel{table:hyperparam}{{2}{7}{In a low-resource setting, some model hyperparameters take on new level of importance. The effect of Min Count, which thresholds the number of times a word must appear in the corpus to be added to the vocabulary, is amplified when data is scarce. In some cases, lemmatization can be an effective way to combat data sparsity. Likewise, the ability to model n-grams with a fastText model could boost performance by overcoming the obstacle of out of vocabulary words which plagues many small models.\relax }{table.caption.5}{}}
 \newlabel{sec:discussion}{{5}{7}{Discussion}{section.5}{}}
-\newlabel{fig:downstream}{{4}{8}{(\textbf {Top}) High performance on the Biblical Figures category indicates some level of biblical influence via the corpus. Interestingly, we see that greek embeddings optimized on the Modern Greek test set significantly outperformed the embeddings optimized for the Ancient Greek. This matches our intuition that things of a biblical nature have had a greater influence on Modern Greek than Ancient Greek. (\textbf {Middle}) Though many of the Indic language embeddings performed well on the Facets of Buddhism, surprisingly so did our Latin and Hebrew embeddings. This leads us to believe that some Buddhist concepts and words are shared by corpora spanning languages as diverse as Hebrew, Latin, and Hindi. At the same time, it should also be noted that Latin and Hebrew were two of the largest models trained compared to other classical languages and thus also likely benefit from greater resource richness. (\textbf {Bottom}) Similar to Figure \ref {fig:biblical} we see languages more closely related to the topic of the category achieving better performance, in this case primarily the Indic languages. Interstingly, our Bengali embeddings performed poorly on this category suggesting that the corpus did not refer heavily to the Hindu context. \relax }{figure.caption.6}{}}
+\newlabel{fig:downstream}{{4}{8}{(\textbf {Top}) High performance on the Biblical Figures category indicates some level of biblical influence via the corpus. Interestingly, we see that greek embeddings optimized on the Modern Greek test set significantly outperformed the embeddings optimized for the Ancient Greek. This matches our intuition that things of a biblical nature have had a greater influence on Modern Greek than Ancient Greek. (\textbf {Middle}) Though many of the Indic language embeddings performed well on the Facets of Buddhism, surprisingly so did our Latin and Hebrew embeddings. This leads us to believe that some Buddhist concepts and words are shared by corpora spanning languages as diverse as Hebrew, Latin, and Hindi. At the same time, it should also be noted that Latin and Hebrew were two of the largest models trained compared to other classical languages and thus also likely benefit from greater resource richness. (\textbf {Bottom}) Similar to Figure \ref {fig:biblical} we see languages more closely related to the topic of the category achieving better performance, in this case primarily the Indic languages. Interestingly, our Bengali embeddings performed poorly on this category suggesting that the corpus did not refer heavily to the Hindu context. \relax }{figure.caption.6}{}}
 \citation{guntuku2019studying}
 \citation{al2013polyglot}
 \citation{grave2018learning}
@@ -70,28 +70,28 @@
 \bibcite{adams-etal-2017-cross}{{1}{2017}{{Adams et~al.}}{{Adams, Makarucha, Neubig, Bird, and Cohn}}}
 \bibcite{agirre2009study}{{2}{2009}{{Agirre et~al.}}{{Agirre, Alfonseca, Hall, Kravalova, Pasca, and Soroa}}}
 \bibcite{ai2017untangling}{{3}{2017}{{Ai et~al.}}{{Ai, Lu, Liu, Wang, Huang, and Mei}}}
-\bibcite{johnson2014}{{4}{2014--2019}{{et~al.}}{{}}}
-\bibcite{al2019smile}{{5}{2019}{{Al-Halah et~al.}}{{Al-Halah, Aitken, Shi, and Caballero}}}
-\bibcite{al2013polyglot}{{6}{2013}{{Al-Rfou et~al.}}{{Al-Rfou, Perozzi, and Skiena}}}
-\bibcite{azarbonyad2017words}{{7}{2017}{{Azarbonyad et~al.}}{{Azarbonyad, Dehghani, Beelen, Arkut, Marx, and Kamps}}}
-\bibcite{barbieri2017emojis}{{8}{2017}{{Barbieri et~al.}}{{Barbieri, Ballesteros, and Saggion}}}
-\bibcite{bergstra2012random}{{9}{2012}{{Bergstra and Bengio}}{{}}}
-\bibcite{bojanowski2016enriching}{{10}{2016}{{Bojanowski et~al.}}{{Bojanowski, Grave, Joulin, and Mikolov}}}
-\bibcite{bruni2012distributional}{{11}{2012}{{Bruni et~al.}}{{Bruni, Boleda, Baroni, and Tran}}}
-\bibcite{buck2014n}{{12}{2014}{{Buck et~al.}}{{Buck, Heafield, and Van~Ooyen}}}
-\bibcite{camacho-collados-navigli-2016-find}{{13}{2016}{{Camacho-Collados and Navigli}}{{}}}
-\bibcite{chen2017understanding}{{14}{2017}{{Chen et~al.}}{{Chen, Tsutsui, Ding, and Ma}}}
-\bibcite{dubossarsky2017outta}{{15}{2017}{{Dubossarsky et~al.}}{{Dubossarsky, Weinshall, and Grossman}}}
-\bibcite{eisner2016emoji2vec}{{16}{2016}{{Eisner et~al.}}{{Eisner, Rockt{\"a}schel, Augenstein, Bo{\v {s}}njak, and Riedel}}}
-\bibcite{felbo2017using}{{17}{2017}{{Felbo et~al.}}{{Felbo, Mislove, S{\o }gaard, Rahwan, and Lehmann}}}
-\bibcite{finkelstein2001placing}{{18}{2001}{{Finkelstein et~al.}}{{Finkelstein, Gabrilovich, Matias, Rivlin, Solan, Wolfman, and Ruppin}}}
-\bibcite{gonen2020simple}{{19}{2020}{{Gonen et~al.}}{{Gonen, Jawahar, Seddah, and Goldberg}}}
-\bibcite{grave2018learning}{{20}{2018}{{Grave et~al.}}{{Grave, Bojanowski, Gupta, Joulin, and Mikolov}}}
-\bibcite{guntuku2019studying}{{21}{2019}{{Guntuku et~al.}}{{Guntuku, Li, Tay, and Ungar}}}
-\bibcite{gupta-etal-2019-improving}{{22}{2019}{{Gupta et~al.}}{{Gupta, Giesselbach, R{\"u}ping, and Bauckhage}}}
-\bibcite{hamilton2016cultural}{{23}{2016{a}}{{Hamilton et~al.}}{{Hamilton, Leskovec, and Jurafsky}}}
-\bibcite{hamilton2016diachronic}{{24}{2016{b}}{{Hamilton et~al.}}{{Hamilton, Leskovec, and Jurafsky}}}
-\bibcite{jiang2018learningword}{{25}{2018}{{Jiang et~al.}}{{Jiang, Yu, Hsieh, and Chang}}}
+\bibcite{al2019smile}{{4}{2019}{{Al-Halah et~al.}}{{Al-Halah, Aitken, Shi, and Caballero}}}
+\bibcite{al2013polyglot}{{5}{2013}{{Al-Rfou et~al.}}{{Al-Rfou, Perozzi, and Skiena}}}
+\bibcite{azarbonyad2017words}{{6}{2017}{{Azarbonyad et~al.}}{{Azarbonyad, Dehghani, Beelen, Arkut, Marx, and Kamps}}}
+\bibcite{barbieri2017emojis}{{7}{2017}{{Barbieri et~al.}}{{Barbieri, Ballesteros, and Saggion}}}
+\bibcite{bergstra2012random}{{8}{2012}{{Bergstra and Bengio}}{{}}}
+\bibcite{bojanowski2016enriching}{{9}{2016}{{Bojanowski et~al.}}{{Bojanowski, Grave, Joulin, and Mikolov}}}
+\bibcite{bruni2012distributional}{{10}{2012}{{Bruni et~al.}}{{Bruni, Boleda, Baroni, and Tran}}}
+\bibcite{buck2014n}{{11}{2014}{{Buck et~al.}}{{Buck, Heafield, and Van~Ooyen}}}
+\bibcite{camacho-collados-navigli-2016-find}{{12}{2016}{{Camacho-Collados and Navigli}}{{}}}
+\bibcite{chen2017understanding}{{13}{2017}{{Chen et~al.}}{{Chen, Tsutsui, Ding, and Ma}}}
+\bibcite{dubossarsky2017outta}{{14}{2017}{{Dubossarsky et~al.}}{{Dubossarsky, Weinshall, and Grossman}}}
+\bibcite{eisner2016emoji2vec}{{15}{2016}{{Eisner et~al.}}{{Eisner, Rockt{\"a}schel, Augenstein, Bo{\v {s}}njak, and Riedel}}}
+\bibcite{felbo2017using}{{16}{2017}{{Felbo et~al.}}{{Felbo, Mislove, S{\o }gaard, Rahwan, and Lehmann}}}
+\bibcite{finkelstein2001placing}{{17}{2001}{{Finkelstein et~al.}}{{Finkelstein, Gabrilovich, Matias, Rivlin, Solan, Wolfman, and Ruppin}}}
+\bibcite{gonen2020simple}{{18}{2020}{{Gonen et~al.}}{{Gonen, Jawahar, Seddah, and Goldberg}}}
+\bibcite{grave2018learning}{{19}{2018}{{Grave et~al.}}{{Grave, Bojanowski, Gupta, Joulin, and Mikolov}}}
+\bibcite{guntuku2019studying}{{20}{2019}{{Guntuku et~al.}}{{Guntuku, Li, Tay, and Ungar}}}
+\bibcite{gupta-etal-2019-improving}{{21}{2019}{{Gupta et~al.}}{{Gupta, Giesselbach, R{\"u}ping, and Bauckhage}}}
+\bibcite{hamilton2016cultural}{{22}{2016{a}}{{Hamilton et~al.}}{{Hamilton, Leskovec, and Jurafsky}}}
+\bibcite{hamilton2016diachronic}{{23}{2016{b}}{{Hamilton et~al.}}{{Hamilton, Leskovec, and Jurafsky}}}
+\bibcite{jiang2018learningword}{{24}{2018}{{Jiang et~al.}}{{Jiang, Yu, Hsieh, and Chang}}}
+\bibcite{johnson2014}{{25}{2014}{{Johnson}}{{}}}
 \bibcite{jungmaier-etal-2020-dirichlet}{{26}{2020}{{Jungmaier et~al.}}{{Jungmaier, Kassner, and Roth}}}
 \bibcite{kozlowski2019geometry}{{27}{2019}{{Kozlowski et~al.}}{{Kozlowski, Taddy, and Evans}}}
 \bibcite{kulkarni2015statistically}{{28}{2015}{{Kulkarni et~al.}}{{Kulkarni, Al-Rfou, Perozzi, and Skiena}}}

@@ -1,9 +1,9 @@
-This is BibTeX, Version 0.99d (TeX Live 2016/Debian)
-Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+This is BibTeX, Version 0.99d (TeX Live 2020)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: acl_natbib.bst
 Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
-Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: emnlp2020.bib
@@ -12,37 +12,37 @@ Warning--empty journal in agirre2009study
 Warning--empty booktitle in zesch2008using
 You've used 41 entries,
             3571 wiz_defined-function locations,
-            919 strings with 14738 characters,
-and the built_in function-call counts, 32140 in all, are:
-= -- 2816
+            917 strings with 14703 characters,
+and the built_in function-call counts, 32106 in all, are:
+= -- 2811
 > -- 1565
 < -- 34
 + -- 502
 - -- 450
-* -- 2076
-:= -- 4646
-add.period$ -- 172
+* -- 2075
+:= -- 4643
+add.period$ -- 171
 call.type$ -- 41
 change.case$ -- 402
 chr.to.int$ -- 42
 cite$ -- 43
-duplicate$ -- 2210
-empty$ -- 2284
+duplicate$ -- 2207
+empty$ -- 2282
 format.name$ -- 575
-if$ -- 7113
+if$ -- 7105
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 438
-newline$ -- 209
+missing$ -- 437
+newline$ -- 208
 num.names$ -- 164
 pop$ -- 1034
 preamble$ -- 1
 purify$ -- 314
 quote$ -- 0
-skip$ -- 1558
+skip$ -- 1555
 stack$ -- 0
-substring$ -- 1214
-swap$ -- 1109
+substring$ -- 1212
+swap$ -- 1107
 text.length$ -- 25
 text.prefix$ -- 0
 top$ -- 0
@@ -50,5 +50,5 @@ type$ -- 369
 warning$ -- 2
 while$ -- 191
 width$ -- 0
-write$ -- 538
+write$ -- 536
 (There were 2 warnings)
