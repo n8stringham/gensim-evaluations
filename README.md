@@ -1,5 +1,5 @@
-# Evaluating Word Embeddings on Low-Resource Languages
-`lreval` provides tools for evaluating low-resource word embeddings. Though the original use case is low-resource languages, the methods have also been used for evaluation in other low-resource scenarios such as emoji embeddings. The library allows users to automatically create custom test sets via [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) and then to evaluate on them using the `OddOneOut` and `Topk` methods proposed in this [paper]().
+# gensim-evaluations
+This library provides methods for evaluating word embedding models loaded with `gensim`. Currently, it implements two methods designed specifically for the evaluation of low-resource models. The code allows users to automatically create custom test sets in any of the 581 languages supported by [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) and then to evaluate on them using the `OddOneOut` and `Topk` methods proposed in this [paper]().
 
 ## Basic Usage
 
@@ -7,7 +7,7 @@
 
 Install from [PyPi](https://pypi.org/)
     
-    $ pip install lreval
+    $ pip install gensim-evaluations
 
 ### Loading a model 
 These methods have been designed for evaluation of embedding models loaded through Gensim.
@@ -18,10 +18,10 @@ As an example, we'll first load the famous pre-trained word2vec model from [Miko
 
     model = api.load('word2vec-google-news-300')
 
-A complete list of pre-trained models available through gensim can be found [here](https://github.com/RaRe-Technologies/gensim-data). Of course, you can always use gensim to train and load your own model as well.
+A complete list of pre-trained models available through gensim can be found [here](https://github.com/RaRe-Technologies/gensim-data). Of course, you can always use `gensim` to train and load your own model.
 
 ### Generating custom language-specific test sets
-In addition to a model, `OddOneOut` and `Topk` also require a custom test set of categories. Each category contains a list of words belonging to it.
+In addition to a model, `OddOneOut` and `Topk` require a custom test set of categories. Each category contains a list of words belonging to it.
 We can easily generate a custom test set by selecting a few relevant items from [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page).
 For example we might choose
 
@@ -43,13 +43,13 @@ As you can see, each of these `classes` has an associated code in the Wikidata K
 
 Following this basic idea, we can generate test set(s) composed of all words in Wikidata belonging to these categories in any language(s) supported by the project.
 
-    from lreval.wikiqueries import generate_test_set
+    from gensim_evaluations import wikiqueries
 
     categories = ['Q54074585','Q192283','Q8366','Q65943','Q24034552','Q20643955',
                'Q5119','Q6256','Q4271324','Q9415','Q60539481']
 
     langs = ['en','la']
-    generate_test_set(items=categories,languages=langs,filename='test_set')
+    wikiqueries.generate_test_set(items=categories,languages=langs,filename='test_set')
 
 All that is required for the `generate_test_set` function is a list of Wikidata items to be used as categories and a list of language codes. The test set(s) will be saved as `.txt` file(s) at location specified by the `filename` parameter. The appropriate language code is automatically appended to the corresponding `filename`.
 
@@ -62,10 +62,10 @@ It should also be noted that category sizes will vary. In particular a broad cat
 ### Evaluation Using Topk and OddOneOut
 We can now evaluate the word2vec model (which we loaded earlier) on these newly generated test sets using both `Topk` and `OddOneOut`
     
-    from lreval.evaluation import OddOneOut, Topk
+    from gensim_evaluations import methods
 
-    topk_result = Topk(cat_file='test_set_en.txt',model=model, k=3, allow_oov=True)
-    odd_out_result = OddOneOut(cat_file='test_set_en.txt',model=model, k_in=3, allow_oov=True, sample_size=1000)
+    topk_result = methods.Topk(cat_file='test_set_en.txt',model=model, k=3, allow_oov=True)
+    odd_out_result = methods.OddOneOut(cat_file='test_set_en.txt',model=model, k_in=3, allow_oov=True, sample_size=1000)
     
     print('topk_result=', topk_result)
     print('odd_out_result=', odd_out_result)
