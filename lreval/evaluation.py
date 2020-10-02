@@ -21,7 +21,7 @@ def Topk(cat_file, model, k=3, allow_oov=False, ft=False):
     allow_oov : bool, optional
         whether to skip or mark wrong comparisons with oov words (default False)
     ft : bool, optional
-        for fastText embedding models (default False)
+        set to True if using fastText embedding models (default False)
 
     Returns
     -------
@@ -130,14 +130,14 @@ def OddOneOut(cat_file, model, k_in, sample_size=1000, restrict_vocab=None, allo
     k_in : int 
         size of group of words from the same category
     sample_size : int
-        number of OddOneOut comparisons to evaluate for each category
+        number of OddOneOut comparisons to evaluate for each category (default=1000)
     restrict_vocab : int, optional
-        the size of the model vocabulary to sample the out word from (default None)
+        the size of the model vocabulary to sample the out-word from (default None)
     allow_oov : bool, optional
         whether to skip or mark wrong comparisons with oov words (default False)
     ft : bool, optional
-        for fastText embedding models (default False)
-    debuig : bool, optional
+        set to True if using fastText embedding models (default False)
+    debug : bool, optional
         print out the comparisons being made for debugging purposes (default False)
 
     Returns

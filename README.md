@@ -5,9 +5,9 @@
 
 ### Installation
 
-Install from [PyPi](https://pypi.org/)!
+Install from [PyPi](https://pypi.org/)
     
-    pip install lreval
+    $ pip install lreval
 
 ### Loading a model 
 These methods have been designed for evaluation of embedding models loaded through Gensim.
@@ -43,7 +43,8 @@ As you can see, each of these `classes` has an associated code in the Wikidata K
 
 Following this basic idea, we can generate test set(s) composed of all words in Wikidata belonging to these categories in any language(s) supported by the project.
 
-    from wikiqueries import generate_test_set
+    from lreval.wikiqueries import generate_test_set
+
     categories = ['Q54074585','Q192283','Q8366','Q65943','Q24034552','Q20643955',
                'Q5119','Q6256','Q4271324','Q9415','Q60539481']
 
@@ -56,20 +57,19 @@ Here are some useful links to help determine the languages and categories availa
 * List of languages supported by Wikidata - https://www.wikidata.org/wiki/Help:Wikimedia_language_codes/lists/all
 * SQID Browser for all items in Wikidata containing the `Instance of (P31)` property - https://sqid.toolforge.org/#/browse?type=classes
 
-It should also be noted that category sizes will vary. In particular a broad category such as `human (Q5)`, contains 8,255,736 instances which is too large to work with as a single category.
-
-It is advised that you either use SQID to filter down to categories that have a reasonable number of entries or test your query on the [Wikidata Query Service](https://query.wikidata.org/) to make sure it runs before using it as a category.
+It should also be noted that category sizes will vary. In particular a broad category such as `human (Q5)`, contains 8,255,736 instances which is too large to work with as a single category. It is advised that you either use SQID to filter down to categories that have a reasonable number of entries or test your query on the [Wikidata Query Service](https://query.wikidata.org/) to make sure it runs before using it as a category.
 
 ### Evaluation Using Topk and OddOneOut
 We can now evaluate the word2vec model (which we loaded earlier) on these newly generated test sets using both `Topk` and `OddOneOut`
     
-    from evaluation import Topk, OddOneOut
+    from lreval.evaluation import OddOneOut, Topk
 
-    odd_out_result = Topk(cat_file='test_set_en.txt',model=model, k=3, allow_oov=True)
-    topk_result = OddOneOut(cat_file='test_set_en.txt',model=model, k_in=3, allow_oov=True, sample_size=10)
+    topk_result = Topk(cat_file='test_set_en.txt',model=model, k=3, allow_oov=True)
+    odd_out_result = OddOneOut(cat_file='test_set_en.txt',model=model, k_in=3, allow_oov=True, sample_size=1000)
     
-    print('odd_out_result=', odd_out_result)
     print('topk_result=', topk_result)
+    print('odd_out_result=', odd_out_result)
+    
 
 The `Topk` and `OddOneOut` functions both return a 5-tuple containing:
 1. overall accuracy
@@ -77,8 +77,6 @@ The `Topk` and `OddOneOut` functions both return a 5-tuple containing:
 3. list of skipped categories
 4. overall raw score (total number of correct comparisons)
 5. category raw score (number of correct comparisons for each category)
-
-For specifics, check `help(Topk)` or `help(OddOneOut)`
 
 ## Contact
 Feel free to reach out to `n8stringham@gmail.com` with any questions.
