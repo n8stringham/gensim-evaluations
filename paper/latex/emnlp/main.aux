@@ -31,20 +31,22 @@
 \newlabel{fig:size_vs_acc}{{1}{1}{The standard analogy task \citep {mikolov2013efficient} fails to measure the quality of word embeddings trained on small datasets, but our novel $\OddOneOut $ and $\topk $ tasks succeed in this regime. \relax }{figure.caption.1}{}}
 \citation{adams-etal-2017-cross,jiang2018learningword,gupta-etal-2019-improving,jungmaier-etal-2020-dirichlet}
 \citation{kann-etal-2019-towards}
+\citation{finkelstein2001placing,radinsky2011word,bruni2012distributional}
 \citation{grave2018learning}
 \citation{kulkarni2015statistically,hamilton2016diachronic,hamilton2016cultural,dubossarsky2017outta,szymanski2017temporal,chen2017understanding,liang2018dynamic,tang2018state,kutuzov2018diachronic,kozlowski2019geometry}
 \citation{azarbonyad2017words}
 \citation{johnson2014}
-\newlabel{sec:contributions}{{1}{2}{Introduction}{figure.caption.1}{}}
+\citation{johnson2014}
+\newlabel{sec:contributions}{{1.2}{2}{Contributions}{subsection.1.2}{}}
 \newlabel{sec:method}{{2}{3}{Evaluation Methods}{section.2}{}}
 \newlabel{eq:OOOki}{{6}{3}{The $\OddOneOut $ method}{equation.2.6}{}}
 \newlabel{eq:P}{{7}{3}{The $\OddOneOut $ method}{equation.2.7}{}}
 \citation{rehurek_lrec}
 \citation{buck2014n,grave2018learning}
-\citation{mikolov2013efficient}
 \newlabel{sec:experiments}{{3}{4}{Experiments}{section.3}{}}
 \newlabel{sec:experiments:eng}{{3.1}{4}{English Experiments}{subsection.3.1}{}}
-\newlabel{fig:cross_cat_acc}{{2}{4}{Breakdown of model performance by category. There does not appear to be any correlation between the performance of the three tasks, indicating that each task is measuring a different aspect of linguistic knowledge. \fixme {the category column should be labeled as ``categories'' and the key should be labeled as ``tasks''} \relax }{figure.caption.2}{}}
+\newlabel{fig:cross_cat_acc}{{2}{4}{Breakdown of model performance by category. There does not appear to be any correlation between the performance of the three tasks, indicating that each task is measuring a different aspect of linguistic knowledge. \relax }{figure.caption.2}{}}
+\citation{mikolov2013efficient}
 \citation{eisner2016emoji2vec}
 \citation{eisner2016emoji2vec}
 \citation{eisner2016emoji2vec,felbo2017using,barbieri2017emojis,ai2017untangling,wijeratne2017semantics,al2019smile}
@@ -53,46 +55,50 @@
 \citation{eisner2016emoji2vec}
 \newlabel{fig:emoji}{{3}{5}{The performance of the generic $\OddOneOut $ and $\topk $ tasks mirrors the performance of \citet {eisner2016emoji2vec}'s emoji-specific model selection task as the learning rate varies. All three tasks provide can be used to estimate the optimal learning rate for the downstream sentiment classification task. \relax }{figure.caption.3}{}}
 \citation{eisner2016emoji2vec}
+\citation{eisner2016emoji2vec}
 \citation{johnson2014}
 \newlabel{sec:mca}{{4}{6}{Multilingual Content Analysis}{section.4}{}}
-\newlabel{table:wikidata}{{4}{6}{Example categories and terms for our test set that we automatically extracted from Wikidata. Only the English translations are shown. \fixme {include 10-15 (exactly 3 lines each) alphabetically ordered} \fixme {are these the exact names in wikidata? I couldn't find the categories in google} \relax }{figure.caption.4}{}}
-\newlabel{sec:wikidata}{{4.1}{6}{Test Set Generation with Wikidata}{subsection.4.1}{}}
+\newlabel{table:wikidata}{{4}{6}{A sample of 3 categories and their respective terms from our test set that we automatically extracted from Wikidata. Only the English translations are shown. \relax }{figure.caption.4}{}}
+\newlabel{table:language}{{1}{7}{The optimal hyperparameters selected for training a model on each corpus, and their corresponding evaluation metrics. ($\texttt {Avg}$ denotes the harmonic mean of $\OddOneOut $ and $\topk $.) We successfully trained models on 16 of the 18 languages provided by the CLTK library (everything except Malayalam and Classical Arabic). Previously, word embeddings had only been trained on Ancient Greek and Latin. \relax }{table.caption.5}{}}
+\newlabel{sec:wikidata}{{4.1}{7}{Test Set Generation with Wikidata}{subsection.4.1}{}}
 \citation{bergstra2012random}
-\newlabel{table:language}{{1}{7}{The optimal hyperparameters selected for training a model on each corpus, and their corresponding evaluation metrics. ($\texttt {Ave}$ denotes the hyperbolic mean of $\OddOneOut $ and $\topk $.) We successfully trained models on 16 of the 18 languages provided by the CLTK library (everything except Malayalam and Classical Arabic). Previously, word embeddings had only been trained on Ancient Greek and Latin. \relax }{table.caption.5}{}}
 \citation{al2013polyglot}
 \citation{grave2018learning}
-\newlabel{fig:downstream}{{5}{8}{\fixme {} \relax }{figure.caption.6}{}}
-\newlabel{table:hyperparam}{{2}{8}{The set of values sampled from for each hyperparameter during our random search hyperparameter optimization.\relax }{table.caption.7}{}}
+\newlabel{table:hyperparam}{{2}{8}{The set of values sampled from for each hyperparameter during our random search hyperparameter optimization.\relax }{table.caption.6}{}}
 \bibstyle{acl_natbib}
 \bibdata{emnlp2020}
 \bibcite{adams-etal-2017-cross}{{1}{2017}{{Adams et~al.}}{{Adams, Makarucha, Neubig, Bird, and Cohn}}}
 \bibcite{ai2017untangling}{{2}{2017}{{Ai et~al.}}{{Ai, Lu, Liu, Wang, Huang, and Mei}}}
+\newlabel{fig:downstream}{{5}{9}{A qualitative investigation of religious topics across the different language models. For the most part, results match our intuition regarding which topics are relevant to each language. \relax }{figure.caption.7}{}}
+\newlabel{sec:discussion}{{5}{9}{Conclusion}{section.5}{}}
 \bibcite{al2019smile}{{3}{2019}{{Al-Halah et~al.}}{{Al-Halah, Aitken, Shi, and Caballero}}}
 \bibcite{al2013polyglot}{{4}{2013}{{Al-Rfou et~al.}}{{Al-Rfou, Perozzi, and Skiena}}}
 \bibcite{azarbonyad2017words}{{5}{2017}{{Azarbonyad et~al.}}{{Azarbonyad, Dehghani, Beelen, Arkut, Marx, and Kamps}}}
 \bibcite{barbieri2017emojis}{{6}{2017}{{Barbieri et~al.}}{{Barbieri, Ballesteros, and Saggion}}}
 \bibcite{bergstra2012random}{{7}{2012}{{Bergstra and Bengio}}{{}}}
-\bibcite{buck2014n}{{8}{2014}{{Buck et~al.}}{{Buck, Heafield, and Van~Ooyen}}}
-\bibcite{chamonikolasova2014middle}{{9}{2014}{{Chamonikolasov{\'a}}}{{}}}
-\bibcite{chen2017understanding}{{10}{2017}{{Chen et~al.}}{{Chen, Tsutsui, Ding, and Ma}}}
-\bibcite{dubossarsky2017outta}{{11}{2017}{{Dubossarsky et~al.}}{{Dubossarsky, Weinshall, and Grossman}}}
-\bibcite{eisner2016emoji2vec}{{12}{2016}{{Eisner et~al.}}{{Eisner, Rockt{\"a}schel, Augenstein, Bo{\v {s}}njak, and Riedel}}}
-\bibcite{felbo2017using}{{13}{2017}{{Felbo et~al.}}{{Felbo, Mislove, S{\o }gaard, Rahwan, and Lehmann}}}
-\bibcite{grave2018learning}{{14}{2018}{{Grave et~al.}}{{Grave, Bojanowski, Gupta, Joulin, and Mikolov}}}
-\bibcite{gupta-etal-2019-improving}{{15}{2019}{{Gupta et~al.}}{{Gupta, Giesselbach, R{\"u}ping, and Bauckhage}}}
-\bibcite{hamilton2016cultural}{{16}{2016{a}}{{Hamilton et~al.}}{{Hamilton, Leskovec, and Jurafsky}}}
-\bibcite{hamilton2016diachronic}{{17}{2016{b}}{{Hamilton et~al.}}{{Hamilton, Leskovec, and Jurafsky}}}
-\bibcite{jiang2018learningword}{{18}{2018}{{Jiang et~al.}}{{Jiang, Yu, Hsieh, and Chang}}}
-\newlabel{sec:discussion}{{5}{9}{Conclusion}{section.5}{}}
-\bibcite{johnson2014}{{19}{2014}{{Johnson}}{{}}}
-\bibcite{jungmaier-etal-2020-dirichlet}{{20}{2020}{{Jungmaier et~al.}}{{Jungmaier, Kassner, and Roth}}}
-\bibcite{kann-etal-2019-towards}{{21}{2019}{{Kann et~al.}}{{Kann, Cho, and Bowman}}}
-\bibcite{kozlowski2019geometry}{{22}{2019}{{Kozlowski et~al.}}{{Kozlowski, Taddy, and Evans}}}
-\bibcite{kulkarni2015statistically}{{23}{2015}{{Kulkarni et~al.}}{{Kulkarni, Al-Rfou, Perozzi, and Skiena}}}
-\bibcite{kutuzov2018diachronic}{{24}{2018}{{Kutuzov et~al.}}{{Kutuzov, {\O }vrelid, Szymanski, and Velldal}}}
-\bibcite{liang2018dynamic}{{25}{2018}{{Liang et~al.}}{{Liang, Zhang, Ren, and Kanoulas}}}
-\bibcite{mikolov2013efficient}{{26}{2013}{{Mikolov et~al.}}{{Mikolov, Chen, Corrado, and Dean}}}
-\bibcite{rehurek_lrec}{{27}{2010}{{{\v R}eh{\r u}{\v r}ek and Sojka}}{{}}}
-\bibcite{szymanski2017temporal}{{28}{2017}{{Szymanski}}{{}}}
-\bibcite{tang2018state}{{29}{2018}{{Tang}}{{}}}
-\bibcite{wijeratne2017semantics}{{30}{2017}{{Wijeratne et~al.}}{{Wijeratne, Balasuriya, Sheth, and Doran}}}
+\bibcite{bruni2012distributional}{{8}{2012}{{Bruni et~al.}}{{Bruni, Boleda, Baroni, and Tran}}}
+\bibcite{buck2014n}{{9}{2014}{{Buck et~al.}}{{Buck, Heafield, and Van~Ooyen}}}
+\bibcite{chamonikolasova2014middle}{{10}{2014}{{Chamonikolasov{\'a}}}{{}}}
+\bibcite{chen2017understanding}{{11}{2017}{{Chen et~al.}}{{Chen, Tsutsui, Ding, and Ma}}}
+\bibcite{dubossarsky2017outta}{{12}{2017}{{Dubossarsky et~al.}}{{Dubossarsky, Weinshall, and Grossman}}}
+\bibcite{eisner2016emoji2vec}{{13}{2016}{{Eisner et~al.}}{{Eisner, Rockt{\"a}schel, Augenstein, Bo{\v {s}}njak, and Riedel}}}
+\bibcite{felbo2017using}{{14}{2017}{{Felbo et~al.}}{{Felbo, Mislove, S{\o }gaard, Rahwan, and Lehmann}}}
+\bibcite{finkelstein2001placing}{{15}{2001}{{Finkelstein et~al.}}{{Finkelstein, Gabrilovich, Matias, Rivlin, Solan, Wolfman, and Ruppin}}}
+\bibcite{grave2018learning}{{16}{2018}{{Grave et~al.}}{{Grave, Bojanowski, Gupta, Joulin, and Mikolov}}}
+\bibcite{gupta-etal-2019-improving}{{17}{2019}{{Gupta et~al.}}{{Gupta, Giesselbach, R{\"u}ping, and Bauckhage}}}
+\bibcite{hamilton2016cultural}{{18}{2016{a}}{{Hamilton et~al.}}{{Hamilton, Leskovec, and Jurafsky}}}
+\bibcite{hamilton2016diachronic}{{19}{2016{b}}{{Hamilton et~al.}}{{Hamilton, Leskovec, and Jurafsky}}}
+\bibcite{jiang2018learningword}{{20}{2018}{{Jiang et~al.}}{{Jiang, Yu, Hsieh, and Chang}}}
+\bibcite{johnson2014}{{21}{2014}{{Johnson}}{{}}}
+\bibcite{jungmaier-etal-2020-dirichlet}{{22}{2020}{{Jungmaier et~al.}}{{Jungmaier, Kassner, and Roth}}}
+\bibcite{kann-etal-2019-towards}{{23}{2019}{{Kann et~al.}}{{Kann, Cho, and Bowman}}}
+\bibcite{kozlowski2019geometry}{{24}{2019}{{Kozlowski et~al.}}{{Kozlowski, Taddy, and Evans}}}
+\bibcite{kulkarni2015statistically}{{25}{2015}{{Kulkarni et~al.}}{{Kulkarni, Al-Rfou, Perozzi, and Skiena}}}
+\bibcite{kutuzov2018diachronic}{{26}{2018}{{Kutuzov et~al.}}{{Kutuzov, {\O }vrelid, Szymanski, and Velldal}}}
+\bibcite{liang2018dynamic}{{27}{2018}{{Liang et~al.}}{{Liang, Zhang, Ren, and Kanoulas}}}
+\bibcite{mikolov2013efficient}{{28}{2013}{{Mikolov et~al.}}{{Mikolov, Chen, Corrado, and Dean}}}
+\bibcite{radinsky2011word}{{29}{2011}{{Radinsky et~al.}}{{Radinsky, Agichtein, Gabrilovich, and Markovitch}}}
+\bibcite{rehurek_lrec}{{30}{2010}{{{\v R}eh{\r u}{\v r}ek and Sojka}}{{}}}
+\bibcite{szymanski2017temporal}{{31}{2017}{{Szymanski}}{{}}}
+\bibcite{tang2018state}{{32}{2018}{{Tang}}{{}}}
+\bibcite{wijeratne2017semantics}{{33}{2017}{{Wijeratne et~al.}}{{Wijeratne, Balasuriya, Sheth, and Doran}}}
