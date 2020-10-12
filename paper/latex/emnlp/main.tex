@@ -206,10 +206,10 @@ This highlights the need for new evaluation methods like ours, which are suitabl
 
 
 From an evaluation standpoint analogies are not the only metric available to tune the hyperparameters of low-resource embedding models.
-Other work has focused on similarity tasks, establishing evaluation benchmarks based on human annotation of English language word pairs.
- Compared the analogy task,
- these methods are more sensitive to low-resource experimental design \cite{finkelstein2001placing,radinsky2011word,bruni2012distributional}.
-however, the high overhead costs required to manually generate test datasets for each new language has prevented them from reaching many low-resource languages. In contrast, our tasks are designed to allow for automatic test set generation in any language available through Wikidata, while maintaining sensitivity in low-resource settings.
+Other work has focused on similarity tasks, establishing evaluation benchmarks based on human annotation of English language word pairs \cite{finkelstein2001placing,radinsky2011word,bruni2012distributional}.
+ Compared to the analogy task,
+ these methods are more sensitive to low-resource experimental design,
+however, they suffer from the high overhead costs associated with manually generating test datasets. In contrast, our tasks leverage the Wikidata knowledge base to automate the process of creating custom test sets while still maintaining sensitivity to low-resource settings.
 
 %A number of other intrinsic methods exist such as measuring relatedness of word pairs and their correlation to human judgments of semantic similarity \cite{schnabel2015evaluation}. 
 %But these methods are limited by the high overhead cost required to pick appropriate word pairs 
@@ -220,7 +220,7 @@ High-resource languages also directly benefit from our methods in two ways.
 First, we help automate evaluation on many languages.
 \citet{grave2018learning} trained FastText embeddings on 157 languages using data from the Common Crawl project.
 But they were only able to explicitly evaluate 10 of these language models using the analogy task due to the expense required in developing appropriate test sets.
-We introduce a method that automatically generates test sets for our $\OddOneOut$ and $\topk$ methods in any of Wikidata's 581 supported languages (including extinct languages like Middle English).%
+A major advantage of our $\OddOneOut$ and $\topk$ methods is that test sets can be generated for them automatically in any of Wikidata's 581 supported languages (including extinct languages like Middle English).%
 %\footnote{For the full list of languages supported, see \url{https://www.wikidata.org/wiki/Help:Wikimedia_language_codes/lists/all}}
 
 Second, many applications of word embeddings investigate low-resource subsets of high-resource languages.
@@ -269,7 +269,7 @@ Section \ref{sec:discussion} concludes by discussing how extensions to this work
 The $\OddOneOut$ and $\topk$ tasks are simple and widely applicable.
 Both tasks require a test set consisting of a list of categories,
 where each category contains a list of words belonging to that category.
-Table \ref{table:wikidata} shows some example categories generated through a fully automated process (described in Section \ref{sec:wikidata}).
+Figure \ref{table:wikidata} shows some example categories generated through a fully automated process (described in Section \ref{sec:wikidata}).
 %For example, the category \texttt{ancient\_cities} might contain the words \texttt{carthage}, \texttt{sparta}, and \texttt{persepolis}.
 %\fixme{add greek translations?}
 The $\topk$ task measures a model's ability to identify words that are related to each category,
