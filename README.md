@@ -1,11 +1,11 @@
 # gensim-evaluations
-This library provides methods for evaluating word embedding models loaded with `gensim`. Currently, it implements two methods designed specifically for the evaluation of low-resource models. The code allows users to automatically create custom test sets in any of the 581 languages supported by [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) and then to evaluate on them using the `OddOneOut` and `Topk` methods proposed in this [paper]().
+This library provides methods for evaluating word embedding models loaded with `gensim`. Currently, it implements two methods designed specifically for the evaluation of low-resource models. The code allows users to automatically create custom test sets in any of the 581 languages supported by [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) and then to evaluate on them using the `OddOneOut` and `Topk` methods proposed in this [paper](https://www.aclweb.org/anthology/2020.eval4nlp-1.17/).
 
 ## Basic Usage
 
 ### Installation
 
-Install from [PyPi](https://pypi.org/)
+Install from [PyPI](https://pypi.org/)
     
     $ pip install gensim-evaluations
 
@@ -25,21 +25,18 @@ In addition to a model, `OddOneOut` and `Topk` require a custom test set of cate
 We can easily generate a custom test set by selecting a few relevant items from [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page).
 For example we might choose
 
-* Tibetan Buddhist Monastery - Q54074585
-* News Agency - Q192283
-* Algorithm - Q8366
-* Theorem - Q65943
-* Mathematical Concept - Q24034552
-* Human Biblical Figure - Q20643955
 * Capital - Q5119
 * Country - Q6256
-* Mythical Character - Q4271324
 * Emotion - Q9415
+* Human Biblical Figure - Q20643955
+* Mythical Character - Q4271324
 * Negative Emotion - Q60539481
+* News Agency - Q192283
+* Tibetan Buddhist Monastery - Q54074585
 
-As you can see, each of these `classes` has an associated code in the Wikidata Knowledgebase. These classes are related to other `items` in the knowledgebase through certain `properties`. One of the most important of these is the `instance of` property `P31` which links items that are a particular example of a class to that class.
+As you can see, each of these `items` has an associated code in Wikidata. They are related to other `items` in the knowledgebase through certain `properties`. One of the most important of these is the `instance of` property `P31` which finds specific examples of some `item`. 
 
-> For example, `Wikinews` is an `instance of Q192283` and `Chuzang` is an `instance of Q54074585` 
+> For example, `Wikinews` is an `instance of` `News Agency` `(Q192283)` and `Chuzang` is an `instance of` `Tibetan Buddhist Monastery` `(Q54074585)` 
 
 Following this basic idea, we can generate test set(s) composed of all words in Wikidata belonging to these categories in any language(s) supported by the project.
 
@@ -53,7 +50,7 @@ Following this basic idea, we can generate test set(s) composed of all words in 
 
 All that is required for the `generate_test_set` function is a list of Wikidata items to be used as categories and a list of language codes. The test set(s) will be saved as `.txt` file(s) at location specified by the `filename` parameter. The appropriate language code is automatically appended to the corresponding `filename`.
 
-Here are some useful links to help determine the languages and categories available.
+Here are some useful links
 * List of languages supported by Wikidata - https://www.wikidata.org/wiki/Help:Wikimedia_language_codes/lists/all
 * SQID Browser for all items in Wikidata containing the `Instance of (P31)` property - https://sqid.toolforge.org/#/browse?type=classes
 
@@ -79,4 +76,4 @@ The `Topk` and `OddOneOut` functions both return a 5-tuple containing:
 5. category raw score (number of correct comparisons for each category)
 
 ## Contact
-Feel free to reach out to `n8stringham@gmail.com` with any questions.
+Feel free to reach out to `n8stringham at gmail dot com` with any questions.
