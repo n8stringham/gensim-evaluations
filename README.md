@@ -23,7 +23,7 @@ A complete list of pre-trained models available through gensim can be found [her
 ### Generating custom language-specific test sets
 In addition to a model, `OddOneOut` and `Topk` require a custom test set of categories. Each category contains a list of words belonging to it.
 We can easily generate a custom test set by selecting a few relevant items from [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page).
-For example we might choose
+Here are just a few of the many items we could choose from:
 
 * Capital - Q5119
 * Country - Q6256
@@ -34,21 +34,19 @@ For example we might choose
 * News Agency - Q192283
 * Tibetan Buddhist Monastery - Q54074585
 
-As you can see, each of these `items` has an associated code in Wikidata. They are related to other `items` in the knowledgebase through certain `properties`. One of the most important of these is the `instance of` property `P31` which finds specific examples of some `item`. 
+Each of these `items` has an associated code in Wikidata. They are related to other `items` in the knowledgebase through certain `properties`. One of the most important of these is the `instance of` property `P31` which finds specific examples of some `item`. 
 
-> For example, `Wikinews` is an `instance of` `News Agency` `(Q192283)` and `Chuzang` is an `instance of` `Tibetan Buddhist Monastery` `(Q54074585)` 
+> For example, `Wikinews` is an `instance of` `News Agency` `(Q192283)` and `abhorrence` is an `instance of` `Negative Emotion` `(Q60539481)` 
 
-Following this basic idea, we can generate test set(s) composed of all words in Wikidata belonging to these categories in any language(s) supported by the project.
+Following this basic idea, we can generate test set(s) for any of these categories in any language(s) supported by Wikidata. Below we create test sets for the negative emotions category in both English and Latin.
 
     from gensim_evaluations import wikiqueries
 
-    categories = ['Q54074585','Q192283','Q8366','Q65943','Q24034552','Q20643955',
-               'Q5119','Q6256','Q4271324','Q9415','Q60539481']
-
+    categories = ['Q60539481']
     langs = ['en','la']
-    wikiqueries.generate_test_set(items=categories,languages=langs,filename='test_set')
+    wikiqueries.generate_test_set(items=categories,languages=langs,filename='neg_emotion')
 
-All that is required for the `generate_test_set` function is a list of Wikidata items to be used as categories and a list of language codes. The test set(s) will be saved as `.txt` file(s) at location specified by the `filename` parameter. The appropriate language code is automatically appended to the corresponding `filename`.
+For simplicity, we create test sets for only a single category and two languages, but in fact the `generate_test_set` function takes as many categories and language codes as you want. The test set(s) will be saved as `.txt` file(s) at location specified by the `filename` parameter. The appropriate language code is automatically appended to the corresponding `filename`.
 
 Here are some useful links
 * List of languages supported by Wikidata - https://www.wikidata.org/wiki/Help:Wikimedia_language_codes/lists/all
@@ -57,16 +55,36 @@ Here are some useful links
 It should also be noted that category sizes will vary. In particular a broad category such as `human (Q5)`, contains 8,255,736 instances which is too large to work with as a single category. It is advised that you either use SQID to filter down to categories that have a reasonable number of entries or test your query on the [Wikidata Query Service](https://query.wikidata.org/) to make sure it runs before using it as a category.
 
 ### Evaluation Using Topk and OddOneOut
-We can now evaluate the word2vec model (which we loaded earlier) on these newly generated test sets using both `Topk` and `OddOneOut`
+We can now evaluate the word2vec model (loaded previously) on the newly generated test set using `OddOneOut`.  
     
     from gensim_evaluations import methods
 
-    topk_result = methods.Topk(cat_file='test_set_en.txt',model=model, k=3, allow_oov=True)
-    odd_out_result = methods.OddOneOut(cat_file='test_set_en.txt',model=model, k_in=3, allow_oov=True, sample_size=1000)
-    
-    print('topk_result=', topk_result)
+    odd_out_result = methods.OddOneOut(cat_file='neg_emotion_en.txt',model=model, k_in=3, allow_oov=True, sample_size=1000)
     print('odd_out_result=', odd_out_result)
-    
+
+Output
+
+    OddOneOut Evaluation
+    0 categories have fewer than k_in entries and will be skipped
+    2 words have been identified as out out of vocabulary
+    words_in_test= 43
+    out of vocab ratio is  0.05
+    Will calculate the 3 th order OddOneOut score for 1 categories
+    odd_out_result= (0.832, {':instance of negative emotion (en)': 0.832}, [], 832, {':instance of negative emotion (en)': 832})
+
+and `Topk`
+
+    topk_result = methods.Topk(cat_file='neg_emotion_en.txt',model=model, k=3, allow_oov=True)
+    print('topk_result=', topk_result)
+
+Output  
+
+    Performing Topk Evaluataion
+    0 categories do not have enough words and will be skipped
+    2 words have been identified as out out of vocabulary
+    43 total words in test set
+    out of vocab ratio is  0.05
+    topk_result= (0.1937984496124031, {':instance of negative emotion (en)': 0.1937984496124031}, [], 25, {':instance of negative emotion (en)': 25})
 
 The `Topk` and `OddOneOut` functions both return a 5-tuple containing:
 1. overall accuracy
@@ -75,5 +93,3 @@ The `Topk` and `OddOneOut` functions both return a 5-tuple containing:
 4. overall raw score (total number of correct comparisons)
 5. category raw score (number of correct comparisons for each category)
 
-## Contact
-Feel free to reach out to `n8stringham at gmail dot com` with any questions.
