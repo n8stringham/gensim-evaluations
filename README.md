@@ -9,6 +9,12 @@ Install from [PyPI](https://pypi.org/)
     
     $ pip install gensim-evaluations
 
+Note: If you get an error try reinstalling gensim with
+
+    $ pip install --upgrade gensim==3.8.2
+
+Currently this package does not work with gensim 4.0
+
 ### Loading a model 
 These methods have been designed for evaluation of embedding models loaded through Gensim.
 As an example, we'll first load the famous pre-trained word2vec model from [Mikolov et. al](https://research.google/pubs/pub41224/).
@@ -18,6 +24,7 @@ As an example, we'll first load the famous pre-trained word2vec model from [Miko
 
     model = api.load('word2vec-google-news-300')
 
+Note: Some users have reported difficult
 A complete list of pre-trained models available through gensim can be found [here](https://github.com/RaRe-Technologies/gensim-data). Of course, you can always use `gensim` to train and load your own model.
 
 ### Generating custom language-specific test sets
@@ -36,7 +43,9 @@ Here are just a few of the many items we could choose from:
 
 Each of these `items` has an associated code in Wikidata. They are related to other `items` in the knowledgebase through certain `properties`. One of the most important of these is the `instance of` property `P31` which finds specific examples of some `item`. 
 
-> For example, `Wikinews` is an `instance of` `News Agency` `(Q192283)` and `abhorrence` is an `instance of` `Negative Emotion` `(Q60539481)` 
+For example:
+* `Wikinews` is an `instance of` `News Agency` `(Q192283)` 
+* `abhorrence` is an `instance of` `Negative Emotion` `(Q60539481)` 
 
 Following this basic idea, we can generate test set(s) for any of these categories in any language(s) supported by Wikidata. Below we create test sets for the negative emotions category in both English and Latin.
 
