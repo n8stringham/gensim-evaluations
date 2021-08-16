@@ -9,22 +9,19 @@ Install from [PyPI](https://pypi.org/)
     
     $ pip install gensim-evaluations
 
-Note: If you get an error try reinstalling gensim with
+If you are using `gensim` >= 4.0.0 and have previously installed `gensim-evaluations` please upgrade to the latest version with
 
-    $ pip install --upgrade gensim==3.8.2
+    $ pip install --upgrade gensim-evaluations
 
-Currently this package does not work with gensim 4.0
 
 ### Loading a model 
 These methods have been designed for evaluation of embedding models loaded through Gensim.
 As an example, we'll first load the famous pre-trained word2vec model from [Mikolov et. al](https://research.google/pubs/pub41224/).
 
     import gensim.downloader as api
-    from gensim.models import Word2Vec
 
     model = api.load('word2vec-google-news-300')
 
-Note: Some users have reported difficult
 A complete list of pre-trained models available through gensim can be found [here](https://github.com/RaRe-Technologies/gensim-data). Of course, you can always use `gensim` to train and load your own model.
 
 ### Generating custom language-specific test sets
